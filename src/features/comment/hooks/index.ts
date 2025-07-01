@@ -1,0 +1,1 @@
+export { useGetCommentsByPostId } from "./useGetCommentsByPostId";

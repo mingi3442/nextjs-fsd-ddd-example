@@ -1,3 +1,4 @@
+import { TanstackQueryProvider } from "@/app/provider/tanstack-query";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../../styles/globals.css";
@@ -26,7 +27,13 @@ export function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <main>
+          <TanstackQueryProvider>
+            <div className="min-w-screen min-h-screen flex flex-col items-center justify-center">
+              {children}
+            </div>
+          </TanstackQueryProvider>
+        </main>
       </body>
     </html>
   );
