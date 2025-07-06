@@ -1,4 +1,4 @@
-import { PostDto } from "@/entities/post/dto";
+import { PostDto } from "@/entities/post/infrastructure/dto";
 import { UserIdentifier } from "@/entities/user/ui/identifier";
 import { CommentIcon, LikeIcon } from "@/shared/ui/icons";
 import Image from "next/image";

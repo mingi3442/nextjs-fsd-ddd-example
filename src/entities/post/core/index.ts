@@ -1,3 +1,3 @@
 export { Post } from "./post.domain";
 export { PostFactory } from "./post.factory";
-export { PostMapper } from "./post.mapper";
+export type { PostRepository } from "./post.repository";

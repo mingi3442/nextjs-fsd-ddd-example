@@ -1,8 +1,8 @@
-import { CommentMapper } from "@/entities/comment/core";
+import { CommentRepository } from "@/entities/comment/core";
 import { CommentFactory } from "@/entities/comment/core/comment.factory";
-import { CommentDto } from "@/entities/comment/dto";
-import { CommentRepository } from "@/entities/comment/repository";
-import { UserRepository } from "@/entities/user/repository";
+import { CommentDto } from "@/entities/comment/infrastructure/dto";
+import { CommentMapper } from "@/entities/comment/mapper";
+import { UserRepository } from "@/entities/user/core";
 import { BaseError } from "@/shared/libs/errors";
 import { CommentUseCase } from "../usecase/comment.usecase";
 
@@ -47,7 +47,7 @@ export const CommentService = (
       const newComment = CommentFactory.createNew(body, postId, {
         id: userId,
         username: user.username,
-        profileImage: user.image || "",
+        profileImage: user.profileImage || "",
       });
 
       const savedComment = await commentRepository.create(newComment);

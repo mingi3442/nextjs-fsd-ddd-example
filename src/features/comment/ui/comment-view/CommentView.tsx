@@ -1,4 +1,4 @@
-import { CommentDto } from "@/entities/comment/dto";
+import { CommentDto } from "@/entities/comment/infrastructure/dto";
 import { UserAvatar } from "@/entities/user/ui/identifier";
 import { formatDate } from "@/shared/libs/date";
 

@@ -1,6 +1,6 @@
-import { CommentApiRepository } from "@/entities/comment/repository";
-import { PostApiRepository } from "@/entities/post/repository";
-import { UserApiRepository } from "@/entities/user/repository";
+import { CommentApiRepository } from "@/entities/comment/infrastructure/repository";
+import { PostApiRepository } from "@/entities/post/infrastructure/repository";
+import { UserApiRepository } from "@/entities/user/infrastructure/repository";
 import { PostService } from "@/features/post/services/post.service";
 import { apiClient } from "@/shared/api/api";
 

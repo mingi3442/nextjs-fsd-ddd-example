@@ -1,6 +1,6 @@
-import { PostDto } from "../dto";
+import { Post } from "@/entities/post/core";
+import { PostDto } from "../infrastructure/dto";
 import { PostEntity } from "../types";
-import { Post } from "./post.domain";
 
 export class PostMapper {
   static toDto(post: Post): PostDto {

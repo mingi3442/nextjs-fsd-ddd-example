@@ -1,4 +1,4 @@
-import { CommentDto } from "@/entities/comment/dto";
+import { CommentDto } from "@/entities/comment/infrastructure/dto";
 import { getRandomDate } from "@/shared/libs/date";
 import { NextRequest, NextResponse } from "next/server";
 

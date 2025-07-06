@@ -1,9 +1,9 @@
-import { CommentMapper } from "@/entities/comment/core";
-import { CommentRepository } from "@/entities/comment/repository";
-import { PostFactory, PostMapper } from "@/entities/post/core";
-import { PostDto } from "@/entities/post/dto";
-import { PostRepository } from "@/entities/post/repository";
-import { UserRepository } from "@/entities/user/repository";
+import { CommentRepository } from "@/entities/comment/core";
+import { CommentMapper } from "@/entities/comment/mapper";
+import { PostFactory, PostRepository } from "@/entities/post/core";
+import { PostDto } from "@/entities/post/infrastructure/dto";
+import { PostMapper } from "@/entities/post/mapper";
+import { UserRepository } from "@/entities/user/core";
 import { BaseError } from "@/shared/libs/errors";
 import { PostDetailResult, PostListResult } from "../types/result.types";
 import { PostUseCase } from "../usecase/post.usecase";
@@ -106,7 +106,7 @@ export const PostService = (
         {
           id: userId,
           username: user.username,
-          profileImage: user.image || "",
+          profileImage: user.profileImage || "",
         },
         image
       );

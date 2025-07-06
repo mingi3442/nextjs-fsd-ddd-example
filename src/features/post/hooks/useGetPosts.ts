@@ -1,4 +1,4 @@
-import { POST_QUERY_KEYS } from "@/entities/post/api";
+import { POST_QUERY_KEYS } from "@/entities/post/infrastructure/api";
 import { postService } from "@/features/post/services";
 import { BaseError } from "@/shared/libs/errors";
 import { useQuery } from "@tanstack/react-query";

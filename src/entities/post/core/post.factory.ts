@@ -1,4 +1,4 @@
-import { PostDto } from "../dto";
+import { PostDto } from "../infrastructure/dto";
 import { UserReference } from "../types";
 import { Post } from "./post.domain";
 

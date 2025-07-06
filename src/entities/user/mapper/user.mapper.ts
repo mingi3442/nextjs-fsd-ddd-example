@@ -1,5 +1,5 @@
 import { User } from "@/entities/user/core/user.domain";
-import { UserDto, UserProfileDto } from "@/entities/user/dto";
+import { UserDto, UserProfileDto } from "@/entities/user/infrastructure/dto";
 
 export class UserMapper {
   static toDto(user: User): UserDto {

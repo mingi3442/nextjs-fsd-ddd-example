@@ -1,6 +1,6 @@
-import { CommentDto } from "../dto";
+import { Comment } from "../core/comment.domain";
+import { CommentDto } from "../infrastructure/dto";
 import { CommentEntity } from "../types";
-import { Comment } from "./comment.domain";
 
 export class CommentMapper {
   static toDto(comment: Comment): CommentDto {

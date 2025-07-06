@@ -1,4 +1,4 @@
-import { UserDto } from "@/entities/user/dto";
+import { UserDto } from "@/entities/user/infrastructure/dto";
 import { UserAvatar } from "@/entities/user/ui/identifier";
 
 interface UserIdentifierProps {

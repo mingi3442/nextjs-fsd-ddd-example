@@ -1,5 +1,5 @@
-import { COMMENT_QUERY_KEY } from "@/entities/comment/api";
-import { CommentDto } from "@/entities/comment/dto";
+import { COMMENT_QUERY_KEY } from "@/entities/comment/infrastructure/api";
+import { CommentDto } from "@/entities/comment/infrastructure/dto";
 import { commentService } from "@/features/comment/services";
 import { BaseError } from "@/shared/libs/errors";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";

@@ -1,4 +1,4 @@
-import { PostDto } from "@/entities/post/dto";
+import { PostDto } from "@/entities/post/infrastructure/dto";
 import { getRandomDate } from "@/shared/libs/date";
 import { NextResponse } from "next/server";
 

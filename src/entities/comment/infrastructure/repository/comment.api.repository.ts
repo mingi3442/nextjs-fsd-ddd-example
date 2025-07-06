@@ -1,18 +1,8 @@
+import { CommentMapper } from "@/entities/comment/mapper";
 import { ApiClient } from "@/shared/api/api";
+import { Comment, CommentRepository } from "../../core";
 import { CommentAdapter } from "../api/comment.adapter";
-import { Comment, CommentMapper } from "../core";
 import { CommentDto } from "../dto";
-
-export interface CommentRepository {
-  getByPostId(postId: string): Promise<Comment[]>;
-  getById(id: string): Promise<Comment>;
-  create(comment: Comment): Promise<Comment>;
-  update(comment: Comment): Promise<Comment>;
-  save(comment: Comment): Promise<Comment>;
-  delete(id: string): Promise<boolean>;
-  like(id: string, userId: string): Promise<boolean>;
-  unlike(id: string, userId: string): Promise<boolean>;
-}
 
 export class CommentApiRepository implements CommentRepository {
   private api: ReturnType<typeof CommentAdapter>;

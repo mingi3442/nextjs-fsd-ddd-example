@@ -1,4 +1,4 @@
-import { PostDto } from "@/entities/post/dto";
+import { PostDto } from "@/entities/post/infrastructure/dto";
 import {
   PostDetailResult,
   PostListResult,

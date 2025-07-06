@@ -1,4 +1,4 @@
-import { UserApiRepository } from "@/entities/user/repository";
+import { UserApiRepository } from "@/entities/user/infrastructure/repository";
 import { UserService } from "@/features/user/services/user.service";
 import { apiClient } from "@/shared/api";
 

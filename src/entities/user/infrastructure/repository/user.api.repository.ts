@@ -1,11 +1,8 @@
-import { UserAdapter } from "@/entities/user/api";
-import { UserMapper } from "@/entities/user/core";
+import { UserRepository } from "@/entities/user/core";
 import { User } from "@/entities/user/core/user.domain";
+import { UserAdapter } from "@/entities/user/infrastructure/api";
+import { UserMapper } from "@/entities/user/mapper";
 import { ApiClient } from "@/shared/api";
-
-export interface UserRepository {
-  getUserProfile(): Promise<User>;
-}
 
 export class UserApiRepository implements UserRepository {
   private api: ReturnType<typeof UserAdapter>;

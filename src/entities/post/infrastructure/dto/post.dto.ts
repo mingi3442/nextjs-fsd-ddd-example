@@ -1,4 +1,4 @@
-import { UserReference } from "../types";
+import { UserReference } from "../../types";
 
 export type PostDto = {
   id: string;
