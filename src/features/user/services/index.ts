@@ -1,10 +1,3 @@
-import { UserApiRepository } from "@/entities/user/infrastructure/repository";
-import { UserService } from "@/features/user/services/user.service";
-import { apiClient } from "@/shared/api";
+import { createUserService } from "@/features/user/services/user.service.factory";
 
-const createUserService = () => {
-  const repository = new UserApiRepository(apiClient);
-  return UserService(repository);
-};
-
-export const userService = createUserService();
+export const userUsecase = createUserService();
