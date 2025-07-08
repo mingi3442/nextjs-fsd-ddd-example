@@ -1,4 +1,4 @@
-import { PostDetailSection } from "@/widgets/post/post-detail-section";
+import { PostDetailSection } from "@/widgets/post";
 
 export const PostDetailPage = ({ postId }: { postId: string }) => {
   return (

@@ -1,6 +1,6 @@
 "use client";
-import { UserAvatar } from "@/entities/user/ui/identifier";
-import { useUserProfile } from "@/features/user/hooks";
+import { UserAvatar } from "@/entities/user";
+import { useUserProfile } from "@/features/user";
 import {
   Logo,
   MessageIcon,

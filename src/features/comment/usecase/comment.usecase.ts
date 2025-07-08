@@ -1,4 +1,4 @@
-import { CommentDto } from "@/entities/comment/infrastructure/dto";
+import { CommentDto } from "@/entities/comment";
 
 export interface CommentUseCase {
   getAllComments: (postId: string) => Promise<CommentDto[]>;

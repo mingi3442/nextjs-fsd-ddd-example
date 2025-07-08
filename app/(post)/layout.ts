@@ -1,1 +1,1 @@
-export { PostLayout as default } from "@/app/layouts/post";
+export { PostLayout as default } from "@/app/layouts";

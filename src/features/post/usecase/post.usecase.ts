@@ -1,8 +1,5 @@
-import { PostDto } from "@/entities/post/infrastructure/dto";
-import {
-  PostDetailResult,
-  PostListResult,
-} from "@/features/post/types/result.types";
+import { PostDto } from "@/entities/post";
+import { PostDetailResult, PostListResult } from "../types";
 
 export interface PostUseCase {
   getAllPosts: (limit?: number, skip?: number) => Promise<PostListResult>;

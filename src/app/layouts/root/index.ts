@@ -1,1 +1,1 @@
-export { metadata, RootLayout } from "./RootLayout";
+export { RootLayout } from "./RootLayout";

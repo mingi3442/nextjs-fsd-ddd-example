@@ -1,5 +1,4 @@
-import { USER_QUERY_KEYS } from "@/entities/user/infrastructure/api";
-import { UserProfileDto } from "@/entities/user/infrastructure/dto";
+import { USER_QUERY_KEYS, UserProfileDto } from "@/entities/user";
 import { BaseError } from "@/shared/libs/errors";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { UserUseCase } from "../usecase/user.usecase";

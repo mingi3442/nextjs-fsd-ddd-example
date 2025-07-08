@@ -1,13 +1,11 @@
 "use client";
 
-import { UserIdentifier } from "@/entities/user/ui/identifier";
-import { CommentForm } from "@/features/comment/ui/comment-form";
-import { CommentView } from "@/features/comment/ui/comment-view";
-import { useGetPostById } from "@/features/post/hooks";
-import { useUserProfile } from "@/features/user/hooks";
+import { UserIdentifier } from "@/entities/user";
+import { CommentForm, CommentView } from "@/features/comment";
+import { useGetPostById } from "@/features/post";
+import { useUserProfile } from "@/features/user";
 import { formatDate } from "@/shared/libs/date";
-import { Divider } from "@/shared/ui/divider";
-import { CommentIcon, LikeIcon } from "@/shared/ui/icons";
+import { CommentIcon, Divider, LikeIcon } from "@/shared/ui";
 import Image from "next/image";
 
 export const PostDetailSection = ({ postId }: { postId: string }) => {

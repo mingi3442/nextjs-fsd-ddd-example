@@ -1,4 +1,5 @@
 import { UserEntity } from "@/entities/user/types/user.types";
+import { BaseError } from "@/shared/libs/errors";
 
 export class User implements UserEntity {
   private _id: string;
@@ -39,5 +40,27 @@ export class User implements UserEntity {
 
   get email(): string {
     return this._email;
+  }
+
+  updateEmail(newEmail: string): void {
+    if (!this.isValidEmail(newEmail)) {
+      throw BaseError.validation("Invalid email format");
+    }
+    this._email = newEmail;
+  }
+
+  updateUsername(newUsername: string) {
+    if (!this.isValidUsername(newUsername)) {
+      throw BaseError.validation("Invalid username format");
+    }
+    this._username = newUsername;
+  }
+
+  private isValidUsername(username: string): boolean {
+    return /^[a-zA-Z0-9_.]{3,20}$/.test(username);
+  }
+
+  private isValidEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 }

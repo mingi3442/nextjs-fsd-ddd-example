@@ -88,16 +88,4 @@ export class Post implements PostEntity {
       this._likes -= 1;
     }
   }
-
-  addComment(): void {
-    this._totalComments += 1;
-    this._updatedAt = new Date().getTime();
-  }
-
-  removeComment(): void {
-    if (this._totalComments > 0) {
-      this._totalComments -= 1;
-      this._updatedAt = new Date().getTime();
-    }
-  }
 }

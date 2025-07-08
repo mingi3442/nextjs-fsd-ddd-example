@@ -1,4 +1,4 @@
-import { PostHeader } from "@/widgets/post-header";
+import { PostHeader } from "@/widgets/header/post-header";
 
 export function PostLayout({
   children,

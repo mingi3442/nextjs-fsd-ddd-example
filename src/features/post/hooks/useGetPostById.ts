@@ -1,8 +1,8 @@
-import { POST_QUERY_KEYS } from "@/entities/post/infrastructure/api";
-import { PostDetailResult } from "@/features/post/types/result.types";
-import { PostUseCase } from "@/features/post/usecase/post.usecase";
+import { POST_QUERY_KEYS } from "@/entities/post";
 import { BaseError } from "@/shared/libs/errors";
 import { useQuery } from "@tanstack/react-query";
+import { PostDetailResult } from "../types";
+import { PostUseCase } from "../usecase/post.usecase";
 
 export const createUseGetPostById = (postUseCase: PostUseCase) => {
   return (id: string, enabled = true) => {

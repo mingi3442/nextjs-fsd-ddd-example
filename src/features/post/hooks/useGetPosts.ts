@@ -1,8 +1,7 @@
-import { POST_QUERY_KEYS } from "@/entities/post/infrastructure/api";
+import { POST_QUERY_KEYS } from "@/entities/post";
 import { BaseError } from "@/shared/libs/errors";
 import { useQuery } from "@tanstack/react-query";
-import { GetPostsOptions } from "../types";
-import { PostListResult } from "../types/result.types";
+import { GetPostsOptions, PostListResult } from "../types";
 import { PostUseCase } from "../usecase/post.usecase";
 
 export const createUseGetPosts = (postUseCase: PostUseCase) => {

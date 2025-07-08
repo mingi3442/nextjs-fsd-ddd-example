@@ -1,11 +1,13 @@
-import { CommentRepository } from "@/entities/comment/core";
-import { CommentMapper } from "@/entities/comment/mapper";
-import { PostFactory, PostRepository } from "@/entities/post/core";
-import { PostDto } from "@/entities/post/infrastructure/dto";
-import { PostMapper } from "@/entities/post/mapper";
-import { UserRepository } from "@/entities/user/core";
+import { CommentMapper, CommentRepository } from "@/entities/comment";
+import {
+  PostDto,
+  PostFactory,
+  PostMapper,
+  PostRepository,
+} from "@/entities/post";
+import { UserRepository } from "@/entities/user";
 import { BaseError } from "@/shared/libs/errors";
-import { PostDetailResult, PostListResult } from "../types/result.types";
+import { PostDetailResult, PostListResult } from "../types";
 import { PostUseCase } from "../usecase/post.usecase";
 
 export const PostService = (

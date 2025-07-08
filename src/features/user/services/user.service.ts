@@ -1,5 +1,4 @@
-import { UserRepository } from "@/entities/user/core";
-import { UserProfileDto } from "@/entities/user/infrastructure/dto";
+import { UserProfileDto, UserRepository } from "@/entities/user";
 import { BaseError } from "@/shared/libs/errors";
 import { UserUseCase } from "../usecase/user.usecase";
 

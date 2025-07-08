@@ -1,5 +1,5 @@
-import { createUseUserProfile } from "@/features/user/hooks/useUserProfile";
-import { UserUseCase } from "@/features/user/usecase/user.usecase";
+import { UserUseCase } from "../usecase/user.usecase";
+import { createUseUserProfile } from "./useUserProfile";
 
 export const createUserHooks = (userUseCase: UserUseCase) => {
   return {

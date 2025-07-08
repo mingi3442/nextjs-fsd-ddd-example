@@ -1,1 +1,1 @@
-export { HomeLayout as default } from "@/app/layouts/home";
+export { HomeLayout as default } from "@/app/layouts";

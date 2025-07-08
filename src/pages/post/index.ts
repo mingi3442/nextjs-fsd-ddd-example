@@ -1,1 +1,1 @@
-export { PostDetailPage } from "./PostDetailPage";
+export { PostDetailPage } from "./detail";

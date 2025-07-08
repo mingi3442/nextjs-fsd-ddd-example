@@ -1,28 +1,14 @@
+import { CommentDto } from "@/entities/comment";
+import { PostDto } from "@/entities/post";
+import { Pagination } from "@/shared/types";
+
+export type PostListResult = Pagination<PostDto>;
+
+export type PostDetailResult = PostDto & {
+  comments: CommentDto[];
+};
 export interface GetPostsOptions {
   limit?: number;
   skip?: number;
   query?: string;
-}
-
-export interface AddPostParams {
-  title: string;
-  body: string;
-  userId: number;
-  image?: string;
-}
-
-export interface UpdatePostParams {
-  id: string;
-  title?: string;
-  body?: string;
-  image?: string;
-}
-
-export interface DeletePostParams {
-  id: string;
-}
-
-export interface PostReactionParams {
-  id: string;
-  type: "like" | "dislike";
 }

@@ -1,6 +1,5 @@
 "use client";
-import { useGetPosts } from "@/features/post/hooks";
-import { PostCard } from "@/features/post/ui/card";
+import { PostCard, useGetPosts } from "@/features/post";
 
 export const PostListSection = () => {
   const { data } = useGetPosts();

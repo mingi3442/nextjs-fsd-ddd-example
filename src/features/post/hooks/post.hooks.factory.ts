@@ -1,4 +1,4 @@
-import { PostUseCase } from "@/features/post/usecase/post.usecase";
+import { PostUseCase } from "../usecase/post.usecase";
 import { createUseGetPostById } from "./useGetPostById";
 import { createUseGetPosts } from "./useGetPosts";
 

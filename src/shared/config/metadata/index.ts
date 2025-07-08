@@ -1,0 +1,1 @@
+export { defaultMetadata } from "./default";

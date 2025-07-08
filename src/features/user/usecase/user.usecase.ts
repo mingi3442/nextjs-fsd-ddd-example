@@ -1,4 +1,4 @@
-import { UserProfileDto } from "@/entities/user/infrastructure/dto";
+import { UserProfileDto } from "@/entities/user";
 
 export interface UserUseCase {
   getUserProfile: () => Promise<UserProfileDto>;

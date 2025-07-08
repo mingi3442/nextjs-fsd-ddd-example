@@ -1,4 +1,4 @@
-import { PostListSection } from "@/widgets/post/post-list-section";
+import { PostListSection } from "@/widgets/post";
 
 export function Home() {
   return (

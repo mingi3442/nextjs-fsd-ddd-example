@@ -1,8 +1,10 @@
-import { CommentRepository } from "@/entities/comment/core";
-import { CommentFactory } from "@/entities/comment/core/comment.factory";
-import { CommentDto } from "@/entities/comment/infrastructure/dto";
-import { CommentMapper } from "@/entities/comment/mapper";
-import { UserRepository } from "@/entities/user/core";
+import {
+  CommentDto,
+  CommentFactory,
+  CommentMapper,
+  CommentRepository,
+} from "@/entities/comment";
+import { UserRepository } from "@/entities/user";
 import { BaseError } from "@/shared/libs/errors";
 import { CommentUseCase } from "../usecase/comment.usecase";
 
