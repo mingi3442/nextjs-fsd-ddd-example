@@ -1,14 +1,14 @@
 import { ApiResponse } from "../types/api.types";
 
 interface ApiConfig extends RequestInit {
-  baseURL?: string;
+  baseURL: string;
 }
 
 export class ApiClient {
   private baseURL: string;
 
   constructor(config: ApiConfig) {
-    this.baseURL = config.baseURL || "";
+    this.baseURL = config.baseURL;
   }
 
   private async handleResponse<T>(response: Response): Promise<ApiResponse<T>> {

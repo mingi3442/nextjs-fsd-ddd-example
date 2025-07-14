@@ -1,4 +1,4 @@
-import { User } from "@/entities/user/core/user.domain";
+import { User } from "./user.domain";
 
 export interface UserRepository {
   getUserProfile(): Promise<User>;
