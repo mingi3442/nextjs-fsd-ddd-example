@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend Clean Architecture (with FSD & DDD)
 
-## Getting Started
+An experimental frontend architecture example implementing Feature-Sliced Design, Domain-Driven Design, and Clean Architecture principles with Next.js.
 
-First, run the development server:
+> ⚠️ **Note**: This is an example project designed to demonstrate architectural patterns and principles. It intentionally includes over-engineering to showcase various design concepts clearly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Documentation
+
+Detailed guides available in:
+
+- 🇺🇸 [English](docs/README.en.md)
+- 🇰🇷 [한국어](docs/README.ko.md)
+
+📝 Blog Post: [Frontend Clean Architecture (with FSD & DDD)](https://min71.dev/posts/fsd-ddd-clean-architecture)
+
+## What This Project Demonstrates
+
+### Architecture Patterns
+
+- **Feature-Sliced Design (FSD)** - Systematic frontend application structuring
+- **Domain-Driven Design (DDD)** - Business domain-centric modeling approach
+- **Clean Architecture** - Dependency inversion and layer separation principles
+
+### Architecture Diagram
+
+![Architecture Diagram](docs/images/example-clean-architecture.png)
+
+### Implementation Highlights
+
+- Type-safe domain entities with business rule encapsulation
+- Repository pattern with dependency injection
+- Value Objects for domain concept validation
+- Factory patterns for complex object creation
+- Consistent error handling across all layers
+- React Query integration for state management
+
+## Project Structure
+
+```
+src/
+├── shared/       # Common utilities, API clients, domain base classes
+├── entities/     # Business entities (User, Post, Comment)
+├── features/     # Application business logic
+├── widgets/      # Independent UI blocks
+├── pages/        # Page components
+└── app/          # Global app configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## When to Consider This Approach
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This architecture works well for:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Projects with complex business logic and state management needs
+- Long-term products requiring continuous feature expansion
+- Medium to large teams with multiple developers
+- Agile environments with frequently changing requirements
+- Services where code quality and test coverage are critical
