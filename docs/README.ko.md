@@ -8,7 +8,7 @@ _[English](README.en.md)_
 
 프론트엔드 개발에서 Clean Architecture, DDD(Domain-Driven Design), FSD(Feature-Sliced Design) 세 가지 아키텍처 패턴을 어떻게 조합할 수 있는지를 보여주기 위한 예시 코드입니다. 각 패턴의 핵심 개념과 실제 적용 방법을 Next.js 환경에서 구체적으로 구현해보았습니다.
 
-> **관련 글**: [Frontend Clean Architecture (with FSD & DDD)](https://min71.dev/posts/fsd-ddd-clean-architecture)
+> **관련 글**: [Frontend Clean Architecture (with FSD & DDD)](https://lapidix.dev/posts/fsd-ddd-clean-architecture)
 
 ### 핵심 개념
 
@@ -75,3 +75,7 @@ entities/post/
 ---
 
 이 프로젝트의 목적은 완벽한 구현을 보여주는 것이 아닙니다. 각 패턴의 특성을 이해하고, 실제 개발에서 언제 어떻게 적용할지 판단할 수 있는 감각을 기르는 데 진짜 가치가 있습니다.
+
+## 라이센스
+
+이 프로젝트는 MIT 라이센스를 따릅니다 - 자세한 내용은 [LICENSE](../LICENSE) 파일을 참조하세요.

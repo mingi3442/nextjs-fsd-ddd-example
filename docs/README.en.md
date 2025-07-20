@@ -8,7 +8,7 @@ _[한국어](README.ko.md)_
 
 This is sample code demonstrating how to combine three architectural patterns: Clean Architecture, Domain-Driven Design (DDD), and Feature-Sliced Design (FSD) in frontend development. The core concepts and practical application methods of each pattern have been specifically implemented in a Next.js environment.
 
-> **Related Article**: [Frontend Clean Architecture (with FSD & DDD)](https://min71.dev/posts/fsd-ddd-clean-architecture)
+> **Related Article**: [Frontend Clean Architecture (with FSD & DDD)](https://lapidix.dev/posts/fsd-ddd-clean-architecture)
 
 ### Core Concepts
 
@@ -75,3 +75,7 @@ This architecture is worth considering in the following situations:
 ---
 
 The purpose of this project is not to demonstrate perfect implementation. The real value lies in understanding the characteristics of each pattern and developing the sense to determine when and how to apply them in actual development.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
