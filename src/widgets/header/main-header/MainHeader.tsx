@@ -33,7 +33,7 @@ export const MainHeader = () => {
         </button>
 
         <UserAvatar
-          userProfileImage={userProfile?.profileImage}
+          userProfileImage={userProfile.profileImage}
           className="w-8 h-8 cursor-pointer relative"
         />
       </div>
