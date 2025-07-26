@@ -11,7 +11,7 @@ import Image from "next/image";
 export const PostDetailSection = ({ postId }: { postId: string }) => {
   const { data: userProfile } = useUserProfile();
   const { data } = useGetPostById(postId);
-  if (!data) return null;
+  if (!userProfile || !data) return null;
   return (
     <div className="max-w-3xl mx-auto px-4 py-6">
       <div className="flex items-center justify-between mb-4 space-x-2">

@@ -11,6 +11,7 @@ import { Input } from "@/shared/ui/input";
 
 export const MainHeader = () => {
   const { data: userProfile } = useUserProfile();
+  if (!userProfile) return null;
 
   return (
     <div className="container flex items-center justify-between p-4">
@@ -33,7 +34,7 @@ export const MainHeader = () => {
         </button>
 
         <UserAvatar
-          userProfileImage={userProfile.profileImage}
+          userProfileImage={userProfile?.profileImage}
           className="w-8 h-8 cursor-pointer relative"
         />
       </div>
