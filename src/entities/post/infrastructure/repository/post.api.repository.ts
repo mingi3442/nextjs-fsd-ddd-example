@@ -26,7 +26,6 @@ export class PostApiRepository implements PostRepository {
   async getById(id: string): Promise<Post> {
     try {
       const postDto = await this.api.getById(id);
-      console.log("🚀 ~ getById: ~ postDto:", postDto);
       if (!postDto) {
         throw new Error(`Post with ID ${id} not found`);
       }

@@ -4,7 +4,7 @@ const generateMockUserProfile = () => {
   return {
     id: 1,
     username: "astute lee",
-    profileImage: "https://picsum.photos/seed/123/100/100",
+    profileImage: "https://picsum.photos/seed/523/100/100",
     fullName: "astute lee",
     email: "user@example.com",
     age: 28,
