@@ -116,5 +116,5 @@ export class ApiClient {
 }
 
 export const apiClient = new ApiClient({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:3000/api",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? "/api",
 });
