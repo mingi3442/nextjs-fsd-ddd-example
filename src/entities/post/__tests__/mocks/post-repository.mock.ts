@@ -1,0 +1,101 @@
+import { MockRepository, RepositoryMockFactory } from "@/shared/libs/__tests__";
+import { vi } from "vitest";
+import { PostEntity } from "../../types";
+
+/**
+ * Post Repository 모킹
+ */
+export interface MockPostRepository extends MockRepository<PostEntity> {
+  findByUserId: ReturnType<typeof vi.fn>;
+  findByTitle: ReturnType<typeof vi.fn>;
+  findPopular: ReturnType<typeof vi.fn>;
+  incrementLikes: ReturnType<typeof vi.fn>;
+  decrementLikes: ReturnType<typeof vi.fn>;
+}
+
+export const PostRepositoryMocks = {
+  /**
+   * 기본 Post Repository 모킹 생성
+   */
+  create: (): MockPostRepository => ({
+    ...RepositoryMockFactory.createBasicMock<PostEntity>(),
+    findByUserId: vi.fn(),
+    findByTitle: vi.fn(),
+    findPopular: vi.fn(),
+    incrementLikes: vi.fn(),
+    decrementLikes: vi.fn(),
+  }),
+
+  /**
+   * 성공 시나리오 Post Repository 모킹
+   */
+  createSuccess: (
+    mockPost: PostEntity,
+    mockPosts: PostEntity[] = []
+  ): MockPostRepository => ({
+    ...RepositoryMockFactory.createSuccessMock(mockPost, mockPosts),
+    findByUserId: vi.fn().mockResolvedValue(mockPosts),
+    findByTitle: vi.fn().mockResolvedValue(mockPosts),
+    findPopular: vi.fn().mockResolvedValue(mockPosts),
+    incrementLikes: vi
+      .fn()
+      .mockResolvedValue({ ...mockPost, likes: mockPost.likes + 1 }),
+    decrementLikes: vi.fn().mockResolvedValue({
+      ...mockPost,
+      likes: Math.max(0, mockPost.likes - 1),
+    }),
+  }),
+
+  /**
+   * 게시글 없음 시나리오 모킹
+   */
+  createNotFound: (): MockPostRepository => ({
+    ...RepositoryMockFactory.createNotFoundMock<PostEntity>(),
+    findByUserId: vi.fn().mockResolvedValue([]),
+    findByTitle: vi.fn().mockResolvedValue([]),
+    findPopular: vi.fn().mockResolvedValue([]),
+    incrementLikes: vi.fn().mockRejectedValue(new Error("Post not found")),
+    decrementLikes: vi.fn().mockRejectedValue(new Error("Post not found")),
+  }),
+
+  /**
+   * 에러 시나리오 Post Repository 모킹
+   */
+  createError: (
+    error: Error = new Error("Post Repository Error")
+  ): MockPostRepository => ({
+    ...RepositoryMockFactory.createErrorMock<PostEntity>(error),
+    findByUserId: vi.fn().mockRejectedValue(error),
+    findByTitle: vi.fn().mockRejectedValue(error),
+    findPopular: vi.fn().mockRejectedValue(error),
+    incrementLikes: vi.fn().mockRejectedValue(error),
+    decrementLikes: vi.fn().mockRejectedValue(error),
+  }),
+
+  /**
+   * 좋아요 기능 특화 모킹
+   */
+  createLikeScenario: (mockPost: PostEntity): MockPostRepository => ({
+    ...RepositoryMockFactory.createBasicMock<PostEntity>(),
+    findById: vi.fn().mockResolvedValue(mockPost),
+    findAll: vi.fn().mockResolvedValue([mockPost]),
+    findByUserId: vi.fn().mockResolvedValue([mockPost]),
+    findByTitle: vi.fn().mockResolvedValue([mockPost]),
+    findPopular: vi.fn().mockResolvedValue([mockPost]),
+    incrementLikes: vi.fn().mockImplementation(async (id: string) => {
+      if (id === mockPost.id) {
+        return { ...mockPost, likes: mockPost.likes + 1 };
+      }
+      throw new Error("Post not found");
+    }),
+    decrementLikes: vi.fn().mockImplementation(async (id: string) => {
+      if (id === mockPost.id) {
+        return { ...mockPost, likes: Math.max(0, mockPost.likes - 1) };
+      }
+      throw new Error("Post not found");
+    }),
+    save: vi.fn().mockResolvedValue(mockPost),
+    update: vi.fn().mockResolvedValue(mockPost),
+    delete: vi.fn().mockResolvedValue(undefined),
+  }),
+};

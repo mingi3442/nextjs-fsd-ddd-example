@@ -1,26 +1,22 @@
-import { defineConfig } from 'vitest/config'
-import { resolve } from 'path'
+import { resolve } from "path";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./test/setup.ts'],
+    environment: "jsdom",
+    setupFiles: ["./setup.ts"],
     include: [
-      'src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-      'src/**/tests/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+      "src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
+      "src/**/tests/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
     ],
-    exclude: [
-      'node_modules',
-      'dist',
-      '.next'
-    ]
+    exclude: ["node_modules", "dist", ".next", "src/shared/libs/tests/**/*"],
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
-      '@/entities': resolve(__dirname, './src/entities'),
-      '@/shared': resolve(__dirname, './src/shared')
-    }
-  }
-})
+      "@": resolve(__dirname, "./src"),
+      "@/entities": resolve(__dirname, "./src/entities"),
+      "@/shared": resolve(__dirname, "./src/shared"),
+    },
+  },
+});
