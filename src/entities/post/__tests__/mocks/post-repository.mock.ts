@@ -1,5 +1,4 @@
 import { MockRepository, RepositoryMockFactory } from "@/shared/libs/__tests__";
-import { vi } from "vitest";
 import { PostEntity } from "../../types";
 
 /**

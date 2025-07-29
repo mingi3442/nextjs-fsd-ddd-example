@@ -1,6 +1,6 @@
-import { PostFixtures } from "../../__tests__/fixtures/post.fixtures";
+import { Post } from "../../core";
 import { UserReference } from "../../types";
-import { Post } from "../post.domain";
+import { PostFixtures } from "../fixtures";
 
 /**
  * Post Domain Model Tests

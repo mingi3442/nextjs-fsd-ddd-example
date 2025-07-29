@@ -10,7 +10,7 @@ export const PostFixtures = {
    * 유효한 게시글 데이터 세트
    */
   valid: {
-    // 기본 게시글 데이터
+    // Basic post data
     basic: {
       id: "post-123",
       user: {
@@ -27,7 +27,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-3600000), // 1시간 전
     } as PostEntity,
 
-    // 이미지가 없는 게시글
+    // Post without image
     withoutImage: {
       id: "post-456",
       user: {
@@ -44,7 +44,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-172800000),
     } as PostEntity,
 
-    // 좋아요가 많은 게시글
+    // Post with many likes
     popularPost: {
       id: "post-popular",
       user: {
@@ -61,7 +61,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-86400000), // 1일 전
     } as PostEntity,
 
-    // 긴 제목과 본문을 가진 게시글
+    // Post with long title and content
     longContent: {
       id: "post-long",
       user: {
@@ -86,7 +86,7 @@ export const PostFixtures = {
    * 무효한 게시글 데이터 세트 (에러 테스트용)
    */
   invalid: {
-    // 빈 제목
+    // Empty title
     emptyTitle: {
       id: "post-empty-title",
       user: {
@@ -103,7 +103,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // 빈 본문
+    // Empty body
     emptyBody: {
       id: "post-empty-body",
       user: {
@@ -120,7 +120,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // 잘못된 사용자 참조
+    // Invalid user reference
     invalidUser: {
       id: "post-invalid-user",
       user: {
@@ -137,7 +137,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // 음수 좋아요 수
+    // Negative likes count
     negativeLikes: {
       id: "post-negative-likes",
       user: {
@@ -159,7 +159,7 @@ export const PostFixtures = {
    * 엣지 케이스 데이터 세트
    */
   edge: {
-    // 좋아요 수가 0인 게시글
+    // Post with zero likes
     zeroLikes: {
       id: "post-zero-likes",
       user: {
@@ -176,7 +176,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // 매우 많은 좋아요 수
+    // Post with maximum likes
     maxLikes: {
       id: "post-max-likes",
       user: {
@@ -193,7 +193,7 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // 생성일과 수정일이 같은 게시글
+    // Post with same creation and update timestamps
     sameTimestamps: {
       id: "post-same-timestamps",
       user: {
@@ -206,8 +206,8 @@ export const PostFixtures = {
       image: "https://example.com/post.jpg",
       likes: 2,
       totalComments: 1,
-      createdAt: 1640995200000, // 고정된 타임스탬프
-      updatedAt: 1640995200000, // 동일한 타임스탬프
+      createdAt: 1640995200000, // Fixed timestamp
+      updatedAt: 1640995200000, // Same timestamp
     } as PostEntity,
   },
 
@@ -289,7 +289,7 @@ export const createMultiplePostFixtures = (
     body: `This is test post number ${index + 1}.`,
     likes: Math.floor(Math.random() * 100),
     totalComments: Math.floor(Math.random() * 20),
-    createdAt: TestDataHelpers.generateTimestamp(-index * 86400000), // 각각 하루씩 이전
+    createdAt: TestDataHelpers.generateTimestamp(-index * 86400000), // Each one day earlier
     updatedAt: TestDataHelpers.generateTimestamp(-index * 86400000),
     ...baseData,
   }));
@@ -327,7 +327,7 @@ export const createRandomPostFixture = (
     totalComments: Math.floor(Math.random() * 100),
     createdAt: TestDataHelpers.generateTimestamp(
       -Math.random() * 86400000 * 30
-    ), // 최근 30일 내
+    ), // Within the last 30 days
     updatedAt: TestDataHelpers.generateTimestamp(
       -Math.random() * 86400000 * 30
     ),

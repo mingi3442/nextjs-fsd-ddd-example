@@ -1,8 +1,7 @@
-import { PostFixtures } from "../../__tests__/fixtures/post.fixtures";
+import { Post, PostFactory } from "../../core";
 import { PostDto } from "../../infrastructure/dto";
 import { UserReference } from "../../types";
-import { Post } from "../post.domain";
-import { PostFactory } from "../post.factory";
+import { PostFixtures } from "../fixtures";
 
 /**
  * Test-specific partial PostDto type

@@ -9,7 +9,7 @@ export const UserFixtures = {
    * 유효한 사용자 데이터 세트
    */
   valid: {
-    // 기본 사용자 데이터
+    // Basic user data
     basic: {
       id: "user-123",
       username: "testuser",
@@ -18,7 +18,7 @@ export const UserFixtures = {
       email: "test@example.com",
     } as UserEntity,
 
-    // 프로필 이미지가 없는 사용자
+    // User without profile image
     withoutImage: {
       id: "user-456",
       username: "noimage",
@@ -27,7 +27,7 @@ export const UserFixtures = {
       email: "noimage@example.com",
     } as UserEntity,
 
-    // 최소 연령 사용자
+    // User with minimum age
     minAge: {
       id: "user-789",
       username: "younguser",
@@ -36,7 +36,7 @@ export const UserFixtures = {
       email: "young@example.com",
     } as UserEntity,
 
-    // 고령 사용자
+    // Elderly user
     maxAge: {
       id: "user-999",
       username: "olduser",
@@ -45,7 +45,7 @@ export const UserFixtures = {
       email: "old@example.com",
     } as UserEntity,
 
-    // 특수문자가 포함된 유효한 사용자명
+    // Valid username with special characters
     specialChars: {
       id: "user-special",
       username: "user_name.123",
@@ -59,7 +59,7 @@ export const UserFixtures = {
    * 무효한 사용자 데이터 세트 (에러 테스트용)
    */
   invalid: {
-    // 빈 사용자명
+    // Empty username
     emptyUsername: {
       id: "user-empty",
       username: "",
@@ -68,7 +68,7 @@ export const UserFixtures = {
       email: "empty@example.com",
     } as UserEntity,
 
-    // 너무 짧은 사용자명
+    // Username too short
     shortUsername: {
       id: "user-short",
       username: "ab",
@@ -77,7 +77,7 @@ export const UserFixtures = {
       email: "short@example.com",
     } as UserEntity,
 
-    // 너무 긴 사용자명
+    // Username too long
     longUsername: {
       id: "user-long",
       username: "a".repeat(21),
@@ -86,7 +86,7 @@ export const UserFixtures = {
       email: "long@example.com",
     } as UserEntity,
 
-    // 잘못된 이메일 형식
+    // Invalid email format
     invalidEmail: {
       id: "user-invalid-email",
       username: "testuser",
@@ -95,7 +95,7 @@ export const UserFixtures = {
       email: "invalid-email",
     } as UserEntity,
 
-    // 음수 나이
+    // Negative age
     negativeAge: {
       id: "user-negative",
       username: "testuser",
@@ -104,7 +104,7 @@ export const UserFixtures = {
       email: "negative@example.com",
     } as UserEntity,
 
-    // 허용되지 않는 특수문자 사용자명
+    // Username with disallowed special characters
     invalidSpecialChars: {
       id: "user-invalid-special",
       username: "user@name!",
@@ -118,7 +118,7 @@ export const UserFixtures = {
    * 엣지 케이스 데이터 세트
    */
   edge: {
-    // 최소 길이 사용자명
+    // Minimum length username
     minLengthUsername: {
       id: "user-min",
       username: "abc",
@@ -127,7 +127,7 @@ export const UserFixtures = {
       email: "min@example.com",
     } as UserEntity,
 
-    // 최대 길이 사용자명
+    // Maximum length username
     maxLengthUsername: {
       id: "user-max",
       username: "a".repeat(20),
@@ -145,7 +145,7 @@ export const UserFixtures = {
       email: "zero@example.com",
     } as UserEntity,
 
-    // 매우 긴 이메일
+    // Very long email
     longEmail: {
       id: "user-long-email",
       username: "testuser",

@@ -10,7 +10,7 @@ export const CommentFixtures = {
    * 유효한 댓글 데이터 세트
    */
   valid: {
-    // 기본 댓글 데이터
+    // Basic comment data
     basic: {
       id: "comment-123",
       postId: "post-123",
@@ -25,7 +25,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-3600000),
     } as CommentEntity,
 
-    // 프로필 이미지가 없는 사용자의 댓글
+    // Comment from user without profile image
     withoutUserImage: {
       id: "comment-456",
       postId: "post-123",
@@ -40,7 +40,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-7200000),
     } as CommentEntity,
 
-    // 좋아요가 많은 댓글
+    // Comment with many likes
     popularComment: {
       id: "comment-popular",
       postId: "post-123",
@@ -55,7 +55,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-86400000),
     } as CommentEntity,
 
-    // 최대 길이 댓글 (100자)
+    // Maximum length comment (100 characters)
     maxLengthComment: {
       id: "comment-max",
       postId: "post-123",
@@ -70,7 +70,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-900000), // 15분 전 (수정됨)
     } as CommentEntity,
 
-    // 최소 길이 댓글
+    // Minimum length comment
     minLengthComment: {
       id: "comment-min",
       postId: "post-123",
@@ -90,7 +90,7 @@ export const CommentFixtures = {
    * 무효한 댓글 데이터 세트 (에러 테스트용)
    */
   invalid: {
-    // 빈 댓글 본문
+    // Empty comment body
     emptyBody: {
       id: "comment-empty",
       postId: "post-123",
@@ -105,7 +105,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // 공백만 있는 댓글 본문
+    // Comment body with only whitespace
     whitespaceBody: {
       id: "comment-whitespace",
       postId: "post-123",
@@ -120,7 +120,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // 너무 긴 댓글 본문 (100자 초과)
+    // Comment body too long (over 100 characters)
     tooLongBody: {
       id: "comment-long",
       postId: "post-123",
@@ -135,7 +135,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // 잘못된 사용자 참조
+    // Invalid user reference
     invalidUser: {
       id: "comment-invalid-user",
       postId: "post-123",
@@ -161,7 +161,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // 음수 좋아요 수
+    // Negative likes count
     negativeLikes: {
       id: "comment-negative-likes",
       postId: "post-123",
@@ -181,7 +181,7 @@ export const CommentFixtures = {
    * 엣지 케이스 데이터 세트
    */
   edge: {
-    // 좋아요 수가 0인 댓글
+    // Comment with zero likes
     zeroLikes: {
       id: "comment-zero-likes",
       postId: "post-123",
@@ -196,7 +196,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // 매우 많은 좋아요 수
+    // Comment with maximum likes
     maxLikes: {
       id: "comment-max-likes",
       postId: "post-123",
@@ -211,7 +211,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // 특수문자가 포함된 댓글
+    // Comment with special characters
     specialChars: {
       id: "comment-special",
       postId: "post-123",
@@ -226,7 +226,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-1800000),
     } as CommentEntity,
 
-    // 이모지가 포함된 댓글
+    // Comment with emojis
     withEmojis: {
       id: "comment-emoji",
       postId: "post-123",
@@ -241,7 +241,7 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(-3600000),
     } as CommentEntity,
 
-    // 생성일과 수정일이 같은 댓글 (수정되지 않음)
+    // Comment with same creation and update timestamps (never edited)
     sameTimestamps: {
       id: "comment-same-timestamps",
       postId: "post-123",
@@ -252,8 +252,8 @@ export const CommentFixtures = {
       } as UserReference,
       body: "This comment was never edited.",
       likes: 0,
-      createdAt: 1640995200000, // 고정된 타임스탬프
-      updatedAt: 1640995200000, // 동일한 타임스탬프
+      createdAt: 1640995200000, // Fixed timestamp
+      updatedAt: 1640995200000, // Same timestamp
     } as CommentEntity,
   },
 
@@ -329,7 +329,7 @@ export const createMultipleCommentFixtures = (
     postId,
     body: `Test comment number ${index + 1}.`,
     likes: Math.floor(Math.random() * 10),
-    createdAt: TestDataHelpers.generateTimestamp(-index * 3600000), // 각각 1시간씩 이전
+    createdAt: TestDataHelpers.generateTimestamp(-index * 3600000), // Each one hour earlier
     updatedAt: TestDataHelpers.generateTimestamp(-index * 3600000),
     ...baseData,
   }));
@@ -371,7 +371,7 @@ export const createRandomCommentFixture = (
     },
     body: `Random comment ${Math.random().toString(36).substr(2, 20)}.`,
     likes: Math.floor(Math.random() * 100),
-    createdAt: TestDataHelpers.generateTimestamp(-Math.random() * 86400000 * 7), // 최근 7일 내
+    createdAt: TestDataHelpers.generateTimestamp(-Math.random() * 86400000 * 7), // Within the last 7 days
     updatedAt: TestDataHelpers.generateTimestamp(-Math.random() * 86400000 * 7),
     ...overrides,
   };

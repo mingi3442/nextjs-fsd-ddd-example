@@ -1,6 +1,6 @@
-import { User } from "@/entities/user/core";
 import { BaseError } from "@/shared/libs/errors";
-import { UserFixtures } from "../fixtures/user.fixtures";
+import { User } from "../../core";
+import { UserFixtures } from "../fixtures";
 
 describe("User Domain", () => {
   describe("Constructor", () => {

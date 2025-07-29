@@ -1,5 +1,5 @@
-import { User, UserFactory } from "@/entities/user/core";
-import { UserFixtures, createUserFixture } from "../fixtures/user.fixtures";
+import { User, UserFactory } from "../../core";
+import { UserFixtures, createUserFixture } from "../fixtures";
 
 describe("UserFactory", () => {
   describe("createNew method", () => {
