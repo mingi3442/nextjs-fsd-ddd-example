@@ -3,7 +3,7 @@ import { CommentDto } from "../infrastructure/dto";
 import { CommentEntity } from "../types";
 
 export class CommentMapper {
-  static toDto(comment: Comment): CommentDto {
+  static toDto(comment: Comment | CommentEntity): CommentDto {
     return {
       id: comment.id,
       body: comment.body,
@@ -15,7 +15,7 @@ export class CommentMapper {
     };
   }
 
-  static toDomain(dto: CommentDto): Comment {
+  static toDomain(dto: CommentDto | CommentEntity): Comment {
     return new Comment(
       dto.id,
       dto.body,
@@ -47,7 +47,7 @@ export class CommentMapper {
     return entities.map((entity) => this.fromEntity(entity));
   }
 
-  static toDtoList(comments: Comment[]): CommentDto[] {
+  static toDtoList(comments: Comment[] | CommentEntity[]): CommentDto[] {
     return comments.map((comment) => this.toDto(comment));
   }
 }

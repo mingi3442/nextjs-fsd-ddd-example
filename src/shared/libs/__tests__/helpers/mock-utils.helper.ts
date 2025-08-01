@@ -1,6 +1,7 @@
 /**
  * Mock 관련 테스트 유틸리티
  */
+import { expect } from "vitest";
 
 /**
  * 통합 모킹 헬퍼 함수들
