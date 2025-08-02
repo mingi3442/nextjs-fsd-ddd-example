@@ -1,8 +1,3 @@
-/**
- * Comment Hook Test Fixtures
- * Mock data for comment-related hook tests
- */
-
 import { CommentDto } from "@/entities/comment";
 
 export const mockCommentsData: CommentDto[] = [

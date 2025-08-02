@@ -17,6 +17,10 @@ export default defineConfig({
       "src/shared/libs/__tests__/**/*",
     ],
   },
+  esbuild: {
+    jsxFactory: "React.createElement",
+    jsxFragment: "React.Fragment",
+  },
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),

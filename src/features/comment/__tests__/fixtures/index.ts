@@ -1,1 +1,1 @@
-export * from "./comment-hook.fixtures";
+export { mockSingleComment } from "./comment-hook.fixtures";
