@@ -823,8 +823,8 @@ describe("Comment Service", () => {
           username: mockUser.username,
           profileImage: mockUser.profileImage || "",
         },
-        createdAt: TestDataHelpers.generateTimestamp(-3600000), // 1시간 전
-        updatedAt: TestDataHelpers.generateTimestamp(-1800000), // 30분 전
+        createdAt: TestDataHelpers.generateTimestamp(-3600000),
+        updatedAt: TestDataHelpers.generateTimestamp(-1800000),
       };
 
       mockUserRepository.getUserProfile.mockResolvedValue(mockUser);
