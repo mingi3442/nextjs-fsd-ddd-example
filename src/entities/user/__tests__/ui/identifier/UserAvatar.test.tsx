@@ -47,7 +47,8 @@ describe("UserAvatar Component", () => {
         <UserAvatar userProfileImage={profileImage} onClick={mockOnClick} />
       );
       const avatarContainer = screen.getByRole("img").parentElement;
-      avatarContainer?.click();
+      expect(avatarContainer).toBeInTheDocument();
+      avatarContainer!.click();
 
       // Then: Click handler should be called
       expect(mockOnClick).toHaveBeenCalledTimes(1);
@@ -70,6 +71,7 @@ describe("UserAvatar Component", () => {
 
       // Then: Custom className should be applied
       const avatarContainer = screen.getByRole("img").parentElement;
+      expect(avatarContainer).toBeInTheDocument();
       expect(avatarContainer).toHaveClass(customClassName);
     });
 
@@ -85,6 +87,7 @@ describe("UserAvatar Component", () => {
 
       // Then: Additional attributes should be passed through
       const avatarContainer = screen.getByRole("img").parentElement;
+      expect(avatarContainer).toBeInTheDocument();
       expect(avatarContainer).toHaveAttribute("data-testid", testId);
     });
   });
@@ -117,6 +120,7 @@ describe("UserAvatar Component", () => {
 
       // Then: Should support keyboard accessibility
       const avatarContainer = screen.getByRole("img").parentElement;
+      expect(avatarContainer).toBeInTheDocument();
       expect(avatarContainer).toHaveAttribute("tabIndex", "0");
     });
   });
