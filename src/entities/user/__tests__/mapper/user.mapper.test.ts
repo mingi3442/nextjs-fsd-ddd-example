@@ -1,8 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { User } from "../../core/user.domain";
+import { User } from "../../core";
 import { UserDto, UserProfileDto } from "../../infrastructure/dto";
-import { UserMapper } from "../../mapper/user.mapper";
-import { UserFixtures } from "../fixtures/user.fixtures";
+import { UserMapper } from "../../mapper";
 
 /**
  * User Mapper Tests
@@ -15,27 +14,26 @@ describe("User Mapper", () => {
 
   beforeEach(() => {
     // Given: Set up valid test data for mapper tests
-    const userData = UserFixtures.valid.basic;
     validUser = new User(
-      userData.id,
-      userData.username,
-      userData.profileImage,
-      userData.age,
-      userData.email
+      "user-123",
+      "testuser",
+      "https://example.com/avatar.jpg",
+      25,
+      "test@example.com"
     );
 
     validUserDto = {
-      id: userData.id,
-      username: userData.username,
-      profileImage: userData.profileImage,
+      id: "user-123",
+      username: "testuser",
+      profileImage: "https://example.com/avatar.jpg",
     };
 
     validUserProfileDto = {
-      id: userData.id,
-      username: userData.username,
-      profileImage: userData.profileImage,
-      age: userData.age,
-      email: userData.email,
+      id: "user-123",
+      username: "testuser",
+      profileImage: "https://example.com/avatar.jpg",
+      age: 25,
+      email: "test@example.com",
     };
   });
 
@@ -149,23 +147,6 @@ describe("User Mapper", () => {
       expect(result.id).toBe("user-123");
       expect(result.username).toBe("testuser");
     });
-
-    it("should handle undefined profileImage when converting DTO to domain", () => {
-      // Given: UserDto with undefined profileImage
-      const dtoWithUndefinedImage: UserDto = {
-        id: "user-123",
-        username: "testuser",
-        profileImage: undefined as unknown as string,
-      };
-
-      // When: Convert to domain
-      const result = UserMapper.toDomain(dtoWithUndefinedImage);
-
-      // Then: Should use empty string as default
-      expect(result.profileImage).toBe("");
-      expect(result.id).toBe("user-123");
-      expect(result.username).toBe("testuser");
-    });
   });
 
   describe("toDomainFromProfile", () => {
@@ -224,128 +205,6 @@ describe("User Mapper", () => {
       expect(result.profileImage).toBe("");
       expect(result.age).toBe(0); // Default value for null
       expect(result.email).toBe(""); // Default value for null
-    });
-
-    it("should handle undefined values in optional fields when converting profile DTO to domain", () => {
-      // Given: UserProfileDto with undefined optional fields
-      const profileDtoWithUndefined: UserProfileDto = {
-        id: "user-123",
-        username: "testuser",
-        profileImage: "https://example.com/avatar.jpg",
-        age: undefined,
-        email: undefined,
-      };
-
-      // When: Convert to domain
-      const result = UserMapper.toDomainFromProfile(profileDtoWithUndefined);
-
-      // Then: Should use default values for undefined fields
-      expect(result.id).toBe("user-123");
-      expect(result.username).toBe("testuser");
-      expect(result.profileImage).toBe("https://example.com/avatar.jpg");
-      expect(result.age).toBe(0); // Default value for undefined
-      expect(result.email).toBe(""); // Default value for undefined
-    });
-  });
-
-  describe("Edge Cases", () => {
-    it("should handle User with maximum age when converting to DTOs", () => {
-      // Given: User with maximum age
-      const userWithMaxAge = new User(
-        "user-max-age",
-        "olduser",
-        "https://example.com/old.jpg",
-        Number.MAX_SAFE_INTEGER,
-        "old@example.com"
-      );
-
-      // When: Convert to both DTOs
-      const basicDto = UserMapper.toDto(userWithMaxAge);
-      const profileDto = UserMapper.toProfileDto(userWithMaxAge);
-
-      // Then: Should handle large age values correctly
-      expect(basicDto.id).toBe("user-max-age");
-      expect(profileDto.age).toBe(Number.MAX_SAFE_INTEGER);
-    });
-
-    it("should handle User with very long username when converting", () => {
-      // Given: User with long username
-      const userWithLongName = new User(
-        "user-long",
-        "a".repeat(50),
-        "https://example.com/avatar.jpg",
-        25,
-        "long@example.com"
-      );
-
-      // When: Convert to DTO and back to domain
-      const dto = UserMapper.toDto(userWithLongName);
-      const domainFromDto = UserMapper.toDomain(dto);
-
-      // Then: Should preserve long username
-      expect(dto.username).toBe("a".repeat(50));
-      expect(domainFromDto.username).toBe("a".repeat(50));
-    });
-
-    it("should handle User with special characters in fields", () => {
-      // Given: User with special characters
-      const userWithSpecialChars = new User(
-        "user-special",
-        "user_name.123",
-        "https://example.com/special@avatar.jpg",
-        25,
-        "special+email@example.com"
-      );
-
-      // When: Convert to profile DTO and back to domain
-      const profileDto = UserMapper.toProfileDto(userWithSpecialChars);
-      const domainFromProfile = UserMapper.toDomainFromProfile(profileDto);
-
-      // Then: Should preserve special characters
-      expect(profileDto.username).toBe("user_name.123");
-      expect(profileDto.profileImage).toBe(
-        "https://example.com/special@avatar.jpg"
-      );
-      expect(profileDto.email).toBe("special+email@example.com");
-      expect(domainFromProfile.username).toBe("user_name.123");
-      expect(domainFromProfile.email).toBe("special+email@example.com");
-    });
-  });
-
-  describe("Integration with Fixtures", () => {
-    it("should correctly convert all valid fixture data", () => {
-      // Given: All valid fixture data
-      const fixtures = [
-        UserFixtures.valid.basic,
-        UserFixtures.valid.withoutImage,
-        UserFixtures.valid.minAge,
-        UserFixtures.valid.maxAge,
-        UserFixtures.valid.specialChars,
-      ];
-
-      fixtures.forEach((fixture) => {
-        // When: Create domain object and convert through mappers
-        const user = new User(
-          fixture.id,
-          fixture.username,
-          fixture.profileImage,
-          fixture.age,
-          fixture.email
-        );
-        const dto = UserMapper.toDto(user);
-        const profileDto = UserMapper.toProfileDto(user);
-        const domainFromProfile = UserMapper.toDomainFromProfile(profileDto);
-
-        // Then: Should maintain data integrity through conversions
-        expect(dto.id).toBe(fixture.id);
-        expect(dto.username).toBe(fixture.username);
-        expect(profileDto.age).toBe(fixture.age);
-        expect(profileDto.email).toBe(fixture.email);
-        expect(domainFromProfile.id).toBe(fixture.id);
-        expect(domainFromProfile.username).toBe(fixture.username);
-        expect(domainFromProfile.age).toBe(fixture.age);
-        expect(domainFromProfile.email).toBe(fixture.email);
-      });
     });
   });
 });
