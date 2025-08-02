@@ -1,4 +1,4 @@
-import { ApiClient } from "@/shared/api/api";
+import { ApiClient } from "@/shared/api";
 import { UserDto, UserProfileDto } from "../dto";
 
 export const UserAdapter = (apiClient: ApiClient) => ({

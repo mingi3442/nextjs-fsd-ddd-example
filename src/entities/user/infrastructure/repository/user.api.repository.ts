@@ -1,5 +1,4 @@
-import { UserRepository } from "@/entities/user/core";
-import { User } from "@/entities/user/core/user.domain";
+import { User, UserRepository } from "@/entities/user/core";
 import { UserAdapter } from "@/entities/user/infrastructure/api";
 import { UserMapper } from "@/entities/user/mapper";
 import { ApiClient } from "@/shared/api";

@@ -1,4 +1,4 @@
-import { ApiClient } from "@/shared/api/api";
+import { ApiClient } from "@/shared/api/base.api";
 import { Pagination } from "@/shared/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { Comment } from "../../core/comment.domain";

@@ -1,4 +1,4 @@
-import { ApiClient } from "@/shared/api/api";
+import { ApiClient } from "@/shared/api";
 import { Pagination } from "@/shared/types";
 import { CommentDto } from "../dto/comment.dto";
 
