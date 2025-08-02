@@ -110,20 +110,15 @@ describe("User API Repository", () => {
       expect(result.email).toBe(""); // Default value for null
     });
 
-    it("should return User with undefined values when API call fails", async () => {
+    it("should throw error when API call fails", async () => {
       // Given: Mock API client throws error
       const apiError = new Error("API Error");
       vi.mocked(mockApiClient.get).mockRejectedValue(apiError);
 
-      // When: Get user profile
-      const result = await userApiRepository.getUserProfile();
-
-      // Then: Should return User with undefined/default values
-      expect(result).toBeInstanceOf(User);
-      expect(result.id).toBeUndefined();
-      expect(result.username).toBeUndefined();
-      expect(result.age).toBe(0);
-      expect(result.email).toBe("");
+      // When & Then: Should throw the API error
+      await expect(userApiRepository.getUserProfile()).rejects.toThrow(
+        "API Error"
+      );
       expect(mockApiClient.get).toHaveBeenCalledWith("/users/me");
     });
   });

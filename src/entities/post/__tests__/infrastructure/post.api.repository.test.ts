@@ -1,9 +1,9 @@
-import { ApiClient } from "@/shared/api/base.api";
+import { ApiClient } from "@/shared/api";
 import { Pagination } from "@/shared/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { Post } from "../../core/post.domain";
+import { Post } from "../../core";
 import { PostDto } from "../../infrastructure/dto";
-import { PostApiRepository } from "../../infrastructure/repository/post.api.repository";
+import { PostApiRepository } from "../../infrastructure/repository";
 import { UserReference } from "../../types";
 
 /**

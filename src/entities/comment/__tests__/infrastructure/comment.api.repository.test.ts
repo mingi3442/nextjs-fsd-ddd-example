@@ -156,13 +156,13 @@ describe("Comment API Repository", () => {
     });
 
     it("should throw error when API call fails", async () => {
-      // Given: Mock API client throws error
+      // Given: Mock API client throws non-404 error
       const apiError = new Error("API Error");
       vi.mocked(mockApiClient.get).mockRejectedValue(apiError);
 
-      // When & Then: Should throw error
+      // When & Then: Should throw the original API error (not 404)
       await expect(commentApiRepository.getById("comment-123")).rejects.toThrow(
-        "Comment with ID comment-123 not found"
+        "API Error"
       );
     });
   });

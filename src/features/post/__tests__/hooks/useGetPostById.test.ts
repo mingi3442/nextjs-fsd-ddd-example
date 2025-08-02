@@ -50,14 +50,11 @@ describe("useGetPostById Hook", () => {
       });
 
       // Then: Post details should be fetched successfully
-      await waitFor(
-        () => {
-          expect(result.current.isSuccess).toBe(true);
-          expect(result.current.data).toEqual(mockPostDetailData);
-          expect(mockPostUseCase.getPostById).toHaveBeenCalledWith(postId);
-        },
-        { timeout: 5000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isSuccess).toBe(true);
+        expect(result.current.data).toEqual(mockPostDetailData);
+        expect(mockPostUseCase.getPostById).toHaveBeenCalledWith(postId);
+      });
     });
 
     it("should return post with comments included", async () => {
@@ -71,14 +68,11 @@ describe("useGetPostById Hook", () => {
       });
 
       // Then: Post should include comment data
-      await waitFor(
-        () => {
-          expect(result.current.isSuccess).toBe(true);
-          expect(result.current.data?.comments).toHaveLength(2);
-          expect(result.current.data?.totalComments).toBe(2);
-        },
-        { timeout: 5000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isSuccess).toBe(true);
+        expect(result.current.data?.comments).toHaveLength(2);
+        expect(result.current.data?.totalComments).toBe(2);
+      });
     });
 
     it("should not execute query when enabled is false", async () => {
@@ -92,14 +86,11 @@ describe("useGetPostById Hook", () => {
       });
 
       // Then: Query should not be executed
-      await waitFor(
-        () => {
-          expect(result.current.isLoading).toBe(false);
-          expect(result.current.isFetching).toBe(false);
-          expect(mockPostUseCase.getPostById).not.toHaveBeenCalled();
-        },
-        { timeout: 5000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false);
+        expect(result.current.isFetching).toBe(false);
+        expect(mockPostUseCase.getPostById).not.toHaveBeenCalled();
+      });
     });
   });
 
@@ -116,13 +107,10 @@ describe("useGetPostById Hook", () => {
       });
 
       // Then: BaseError should be propagated correctly
-      await waitFor(
-        () => {
-          expect(result.current.isError).toBe(true);
-          expect(result.current.error).toEqual(baseError);
-        },
-        { timeout: 5000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isError).toBe(true);
+        expect(result.current.error).toEqual(baseError);
+      });
     });
 
     it("should wrap generic errors in BaseError", async () => {
@@ -137,16 +125,13 @@ describe("useGetPostById Hook", () => {
       });
 
       // Then: Generic error should be wrapped in BaseError
-      await waitFor(
-        () => {
-          expect(result.current.isError).toBe(true);
-          expect(result.current.error).toBeInstanceOf(BaseError);
-          expect(result.current.error?.message).toBe(
-            `Failed to fetch post with ID ${postId}`
-          );
-        },
-        { timeout: 5000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isError).toBe(true);
+        expect(result.current.error).toBeInstanceOf(BaseError);
+        expect(result.current.error?.message).toBe(
+          `Failed to fetch post with ID ${postId}`
+        );
+      });
     });
   });
 
@@ -167,20 +152,14 @@ describe("useGetPostById Hook", () => {
       });
 
       // Then: Loading state should be managed correctly
-      await waitFor(
-        () => {
-          expect(result.current.isLoading).toBe(true);
-        },
-        { timeout: 5000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(true);
+      });
 
-      await waitFor(
-        () => {
-          expect(result.current.isSuccess).toBe(true);
-          expect(result.current.isLoading).toBe(false);
-        },
-        { timeout: 5000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isSuccess).toBe(true);
+        expect(result.current.isLoading).toBe(false);
+      });
     });
   });
 });

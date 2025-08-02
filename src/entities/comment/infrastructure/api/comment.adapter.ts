@@ -22,13 +22,13 @@ export const CommentAdapter = (apiClient: ApiClient) => ({
     }
   },
 
-  getById: async (id: string): Promise<CommentDto | null> => {
+  getById: async (id: string): Promise<CommentDto> => {
     try {
       const response = await apiClient.get<CommentDto>(`/comments/${id}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching comment with ID ${id}:`, error);
-      return null;
+      throw error;
     }
   },
 
@@ -36,7 +36,7 @@ export const CommentAdapter = (apiClient: ApiClient) => ({
     body: string,
     postId: string,
     userId: string
-  ): Promise<CommentDto | null> => {
+  ): Promise<CommentDto> => {
     try {
       const response = await apiClient.post<CommentDto>(`/comments/add`, {
         body,
@@ -46,11 +46,11 @@ export const CommentAdapter = (apiClient: ApiClient) => ({
       return response.data;
     } catch (error) {
       console.error("Error creating comment:", error);
-      return null;
+      throw error;
     }
   },
 
-  update: async (id: string, body: string): Promise<CommentDto | null> => {
+  update: async (id: string, body: string): Promise<CommentDto> => {
     try {
       const response = await apiClient.put<CommentDto>(`/comments/${id}`, {
         body,
@@ -58,7 +58,7 @@ export const CommentAdapter = (apiClient: ApiClient) => ({
       return response.data;
     } catch (error) {
       console.error(`Error updating comment with ID ${id}:`, error);
-      return null;
+      throw error;
     }
   },
 

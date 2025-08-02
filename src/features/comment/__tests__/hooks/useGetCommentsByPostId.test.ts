@@ -103,12 +103,9 @@ describe("useGetCommentsByPostId Hook", () => {
       });
 
       // Then: BaseError should be propagated correctly
-      await waitFor(
-        () => {
-          expect(result.current.isError).toBe(true);
-        },
-        { timeout: 3000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isError).toBe(true);
+      });
 
       expect(result.current.error).toEqual(baseError);
     });
@@ -125,12 +122,9 @@ describe("useGetCommentsByPostId Hook", () => {
       });
 
       // Then: Generic error should be wrapped in BaseError
-      await waitFor(
-        () => {
-          expect(result.current.isError).toBe(true);
-        },
-        { timeout: 3000 }
-      );
+      await waitFor(() => {
+        expect(result.current.isError).toBe(true);
+      });
 
       expect(result.current.error).toBeInstanceOf(BaseError);
       expect(result.current.error?.message).toBe(

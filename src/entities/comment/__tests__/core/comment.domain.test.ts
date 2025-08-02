@@ -263,8 +263,8 @@ describe("Comment Domain Model", () => {
       );
       const userId = "user-456";
 
-      // When: Call unlike method
-      comment.unlike(userId);
+      // When: Call unlike method on comment with 0 likes
+      commentWithZeroLikes.unlike(userId);
 
       // Then: Likes count should not go below 0
       expect(commentWithZeroLikes.likes).toBe(0);

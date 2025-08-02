@@ -8,7 +8,7 @@ export const UserAdapter = (apiClient: ApiClient) => ({
       .then((response) => response.data)
       .catch((error) => {
         console.error("User Profile Error: ", error);
-        return error;
+        throw error;
       });
   },
 });
