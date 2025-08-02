@@ -1,11 +1,3 @@
-/**
- * Service 레이어 모킹 기본 유틸리티
- * 비즈니스 로직 레이어를 모킹하여 상위 레이어 테스트에 집중
- */
-
-/**
- * 기본 Service 인터페이스
- */
 export interface MockService<T = unknown> {
   create: ReturnType<typeof vi.fn> & { mockResolvedValue: (value: T) => void };
   getById: ReturnType<typeof vi.fn> & {
@@ -20,13 +12,7 @@ export interface MockService<T = unknown> {
   };
 }
 
-/**
- * Service 모킹 팩토리
- */
 export class ServiceMockFactory {
-  /**
-   * 기본 Service 모킹 생성
-   */
   static createBasicMock<T>(): MockService<T> {
     return {
       create: vi.fn(),
@@ -37,9 +23,6 @@ export class ServiceMockFactory {
     };
   }
 
-  /**
-   * 성공 시나리오로 미리 설정된 Service 모킹 생성
-   */
   static createSuccessMock<T>(mockData: T, mockList: T[] = []): MockService<T> {
     return {
       create: vi.fn().mockResolvedValue(mockData),
@@ -50,9 +33,6 @@ export class ServiceMockFactory {
     };
   }
 
-  /**
-   * 에러 시나리오로 미리 설정된 Service 모킹 생성
-   */
   static createErrorMock<T>(
     error: Error = new Error("Service Error")
   ): MockService<T> {
@@ -65,9 +45,6 @@ export class ServiceMockFactory {
     };
   }
 
-  /**
-   * Not Found 시나리오 Service 모킹 생성
-   */
   static createNotFoundMock<T>(): MockService<T> {
     return {
       create: vi.fn(),
@@ -79,13 +56,7 @@ export class ServiceMockFactory {
   }
 }
 
-/**
- * Service 모킹 헬퍼 함수들
- */
 export const ServiceMockHelpers = {
-  /**
-   * Service 메서드 호출 검증
-   */
   verifyMethodCall: <T>(
     mockService: MockService<T>,
     method: keyof MockService<T>,
@@ -97,9 +68,6 @@ export const ServiceMockHelpers = {
     expect(mockMethod).toHaveBeenNthCalledWith(callIndex + 1, ...expectedArgs);
   },
 
-  /**
-   * Service 메서드 호출 횟수 검증
-   */
   verifyCallCount: <T>(
     mockService: MockService<T>,
     method: keyof MockService<T>,
@@ -108,9 +76,6 @@ export const ServiceMockHelpers = {
     expect(mockService[method]).toHaveBeenCalledTimes(expectedCount);
   },
 
-  /**
-   * 모든 Service 모킹 초기화
-   */
   resetAllMocks: <T>(mockService: MockService<T>) => {
     Object.values(mockService).forEach((mockFn) => {
       if (vi.isMockFunction(mockFn)) {
@@ -119,9 +84,6 @@ export const ServiceMockHelpers = {
     });
   },
 
-  /**
-   * Service 모킹 동작 변경
-   */
   changeMockBehavior: <T>(
     mockService: MockService<T>,
     method: keyof MockService<T>,
@@ -133,9 +95,6 @@ export const ServiceMockHelpers = {
     }
   },
 
-  /**
-   * 비동기 Service 메서드 지연 시뮬레이션
-   */
   addDelay: <T>(
     mockService: MockService<T>,
     method: keyof MockService<T>,

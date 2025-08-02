@@ -782,8 +782,8 @@ describe("Post Service", () => {
         id: TestDataHelpers.generateId("post"),
         title: `Post ${index + 1} - ${TestDataHelpers.generateId("title")}`,
         body: `Content for post ${index + 1}`,
-        createdAt: TestDataHelpers.generateTimestamp(-index * 3600000), // 각각 1시간씩 이전
-        updatedAt: TestDataHelpers.generateTimestamp(-index * 1800000), // 각각 30분씩 이전
+        createdAt: TestDataHelpers.generateTimestamp(-index * 3600000),
+        updatedAt: TestDataHelpers.generateTimestamp(-index * 1800000),
       }));
 
       mockPostRepository.getAll.mockResolvedValue(mockPosts);

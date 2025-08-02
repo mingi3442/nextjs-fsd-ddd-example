@@ -1,9 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 
-/**
- * 테스트용 QueryClient 생성 함수
- */
 export const createTestQueryClient = (): QueryClient => {
   return new QueryClient({
     defaultOptions: {
@@ -19,9 +16,6 @@ export const createTestQueryClient = (): QueryClient => {
   });
 };
 
-/**
- * React Query Provider 래퍼 컴포넌트
- */
 interface QueryWrapperProps {
   children: React.ReactNode;
   queryClient?: QueryClient;

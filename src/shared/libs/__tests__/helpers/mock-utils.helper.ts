@@ -1,15 +1,6 @@
-/**
- * Mock 관련 테스트 유틸리티
- */
 import { expect } from "vitest";
 
-/**
- * 통합 모킹 헬퍼 함수들
- */
 export const MockHelpers = {
-  /**
-   * 모든 모킹 초기화
-   */
   resetAll: (...mocks: unknown[]) => {
     mocks.forEach((mock) => {
       if (typeof mock === "object" && mock !== null) {
@@ -22,9 +13,6 @@ export const MockHelpers = {
     });
   },
 
-  /**
-   * 모든 모킹 복원
-   */
   restoreAll: (...mocks: unknown[]) => {
     mocks.forEach((mock) => {
       if (typeof mock === "object" && mock !== null) {
@@ -37,9 +25,6 @@ export const MockHelpers = {
     });
   },
 
-  /**
-   * 모킹 상태 검증
-   */
   verifyMockState: (
     mock: Record<string, unknown>,
     expectedCalls: Record<string, number>

@@ -3,9 +3,6 @@ import React from "react";
 import { QueryWrapper, createTestQueryClient } from "./QueryWrapper";
 import { RouterWrapper } from "./RouterWrapper";
 
-/**
- * 모든 Provider를 포함하는 통합 테스트 래퍼
- */
 interface FullWrapperProps {
   children: React.ReactNode;
   queryClient?: QueryClient;
@@ -35,9 +32,6 @@ export const FullWrapper: React.FC<FullWrapperProps> = ({
   );
 };
 
-/**
- * 커스텀 FullWrapper 팩토리
- */
 export const createFullWrapper = (
   options: {
     queryClientOptions?: Partial<ConstructorParameters<typeof QueryClient>[0]>;

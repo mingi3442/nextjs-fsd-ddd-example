@@ -1,9 +1,6 @@
 import { MockRepository, RepositoryMockFactory } from "@/shared/libs/__tests__";
 import { PostEntity } from "../../types";
 
-/**
- * Post Repository 모킹
- */
 export interface MockPostRepository extends MockRepository<PostEntity> {
   getAll: ReturnType<typeof vi.fn>;
   getById: ReturnType<typeof vi.fn>;
@@ -19,9 +16,6 @@ export interface MockPostRepository extends MockRepository<PostEntity> {
 }
 
 export const PostRepositoryMocks = {
-  /**
-   * 기본 Post Repository 모킹 생성
-   */
   create: (): MockPostRepository => ({
     ...RepositoryMockFactory.createBasicMock<PostEntity>(),
     getAll: vi.fn(),
@@ -37,9 +31,6 @@ export const PostRepositoryMocks = {
     decrementLikes: vi.fn(),
   }),
 
-  /**
-   * 성공 시나리오 Post Repository 모킹
-   */
   createSuccess: (
     mockPost: PostEntity,
     mockPosts: PostEntity[] = []
@@ -63,9 +54,6 @@ export const PostRepositoryMocks = {
     }),
   }),
 
-  /**
-   * 게시글 없음 시나리오 모킹
-   */
   createNotFound: (): MockPostRepository => ({
     ...RepositoryMockFactory.createNotFoundMock<PostEntity>(),
     getAll: vi.fn().mockResolvedValue([]),
@@ -81,9 +69,6 @@ export const PostRepositoryMocks = {
     decrementLikes: vi.fn().mockRejectedValue(new Error("Post not found")),
   }),
 
-  /**
-   * 에러 시나리오 Post Repository 모킹
-   */
   createError: (
     error: Error = new Error("Post Repository Error")
   ): MockPostRepository => ({
@@ -101,9 +86,6 @@ export const PostRepositoryMocks = {
     decrementLikes: vi.fn().mockRejectedValue(error),
   }),
 
-  /**
-   * 좋아요 기능 특화 모킹
-   */
   createLikeScenario: (mockPost: PostEntity): MockPostRepository => ({
     ...RepositoryMockFactory.createBasicMock<PostEntity>(),
     getAll: vi.fn().mockResolvedValue([mockPost]),

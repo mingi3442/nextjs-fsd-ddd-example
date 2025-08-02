@@ -1,9 +1,6 @@
 import { MockRepository, RepositoryMockFactory } from "@/shared/libs/__tests__";
 import { UserEntity } from "../../types";
 
-/**
- * User Repository 모킹
- */
 export interface MockUserRepository extends MockRepository<UserEntity> {
   getUserProfile: ReturnType<typeof vi.fn>;
   findByUsername: ReturnType<typeof vi.fn>;
@@ -13,9 +10,6 @@ export interface MockUserRepository extends MockRepository<UserEntity> {
 }
 
 export const UserRepositoryMocks = {
-  /**
-   * 기본 User Repository 모킹 생성
-   */
   create: (): MockUserRepository => ({
     ...RepositoryMockFactory.createBasicMock<UserEntity>(),
     getUserProfile: vi.fn(),
@@ -25,9 +19,6 @@ export const UserRepositoryMocks = {
     existsByEmail: vi.fn(),
   }),
 
-  /**
-   * 성공 시나리오 User Repository 모킹
-   */
   createSuccess: (
     mockUser: UserEntity,
     mockUsers: UserEntity[] = []
@@ -40,9 +31,6 @@ export const UserRepositoryMocks = {
     existsByEmail: vi.fn().mockResolvedValue(true),
   }),
 
-  /**
-   * 사용자 없음 시나리오 모킹
-   */
   createNotFound: (): MockUserRepository => ({
     ...RepositoryMockFactory.createNotFoundMock<UserEntity>(),
     getUserProfile: vi.fn().mockResolvedValue(null),
@@ -52,9 +40,6 @@ export const UserRepositoryMocks = {
     existsByEmail: vi.fn().mockResolvedValue(false),
   }),
 
-  /**
-   * 에러 시나리오 User Repository 모킹
-   */
   createError: (
     error: Error = new Error("User Repository Error")
   ): MockUserRepository => ({
@@ -66,9 +51,6 @@ export const UserRepositoryMocks = {
     existsByEmail: vi.fn().mockRejectedValue(error),
   }),
 
-  /**
-   * 중복 사용자 시나리오 모킹 (사용자명/이메일 중복)
-   */
   createDuplicate: (mockUser: UserEntity): MockUserRepository => ({
     ...RepositoryMockFactory.createBasicMock<UserEntity>(),
     getUserProfile: vi.fn().mockResolvedValue(mockUser),

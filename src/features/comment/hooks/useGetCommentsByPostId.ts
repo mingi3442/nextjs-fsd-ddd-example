@@ -27,7 +27,6 @@ export const createUseGetCommentsByPostId = (
       gcTime: 5 * 60 * 1000,
       refetchOnWindowFocus: true,
       enabled: Boolean(postId),
-      // retry 설정 제거 - QueryClient의 기본 설정 사용
     });
     return useGetCommentsByPostId;
   };

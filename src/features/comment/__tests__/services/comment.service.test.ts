@@ -865,7 +865,7 @@ describe("Comment Service", () => {
           body: `Comment ${index + 1} - ${TestDataHelpers.generateId(
             "content"
           )}`,
-          createdAt: TestDataHelpers.generateTimestamp(-index * 3600000), // 각각 1시간씩 이전
+          createdAt: TestDataHelpers.generateTimestamp(-index * 3600000),
           updatedAt: TestDataHelpers.generateTimestamp(-index * 3600000),
         })
       );

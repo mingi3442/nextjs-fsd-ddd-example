@@ -1,9 +1,6 @@
 import { MockRepository, RepositoryMockFactory } from "@/shared/libs/__tests__";
 import { CommentEntity } from "../../types";
 
-/**
- * Comment Repository 모킹
- */
 export interface MockCommentRepository extends MockRepository<CommentEntity> {
   getByPostId: ReturnType<typeof vi.fn>;
   getById: ReturnType<typeof vi.fn>;
@@ -18,9 +15,6 @@ export interface MockCommentRepository extends MockRepository<CommentEntity> {
 }
 
 export const CommentRepositoryMocks = {
-  /**
-   * 기본 Comment Repository 모킹 생성
-   */
   create: (): MockCommentRepository => ({
     ...RepositoryMockFactory.createBasicMock<CommentEntity>(),
     getByPostId: vi.fn(),
@@ -35,9 +29,6 @@ export const CommentRepositoryMocks = {
     decrementLikes: vi.fn(),
   }),
 
-  /**
-   * 성공 시나리오 Comment Repository 모킹
-   */
   createSuccess: (
     mockComment: CommentEntity,
     mockComments: CommentEntity[] = []
@@ -60,9 +51,6 @@ export const CommentRepositoryMocks = {
     }),
   }),
 
-  /**
-   * 댓글 없음 시나리오 모킹
-   */
   createNotFound: (): MockCommentRepository => ({
     ...RepositoryMockFactory.createNotFoundMock<CommentEntity>(),
     getByPostId: vi.fn().mockResolvedValue([]),
@@ -77,9 +65,6 @@ export const CommentRepositoryMocks = {
     decrementLikes: vi.fn().mockRejectedValue(new Error("Comment not found")),
   }),
 
-  /**
-   * 에러 시나리오 Comment Repository 모킹
-   */
   createError: (
     error: Error = new Error("Comment Repository Error")
   ): MockCommentRepository => ({
@@ -96,9 +81,6 @@ export const CommentRepositoryMocks = {
     decrementLikes: vi.fn().mockRejectedValue(error),
   }),
 
-  /**
-   * 좋아요 기능 특화 모킹
-   */
   createLikeScenario: (mockComment: CommentEntity): MockCommentRepository => ({
     ...RepositoryMockFactory.createBasicMock<CommentEntity>(),
     getByPostId: vi.fn().mockResolvedValue([mockComment]),
@@ -127,9 +109,6 @@ export const CommentRepositoryMocks = {
     }),
   }),
 
-  /**
-   * 게시글별 댓글 조회 특화 모킹
-   */
   createPostCommentsScenario: (
     postId: string,
     mockComments: CommentEntity[]

@@ -1,11 +1,3 @@
-/**
- * API 모킹 공통 유틸리티
- * HTTP 요청/응답을 모킹하여 네트워크 의존성 없이 테스트 가능
- */
-
-/**
- * HTTP 응답 모킹 타입 정의
- */
 export interface MockResponse<T = unknown> {
   data: T;
   status: number;
@@ -13,9 +5,6 @@ export interface MockResponse<T = unknown> {
   headers: Record<string, string>;
 }
 
-/**
- * API 에러 응답 타입 정의
- */
 export interface MockErrorResponse {
   message: string;
   status: number;
@@ -23,13 +12,7 @@ export interface MockErrorResponse {
   details?: Record<string, unknown>;
 }
 
-/**
- * 기본 API 모킹 유틸리티
- */
 export class ApiMockUtils {
-  /**
-   * 성공 응답 생성
-   */
   static createSuccessResponse<T>(
     data: T,
     status: number = 200,
@@ -46,9 +29,6 @@ export class ApiMockUtils {
     };
   }
 
-  /**
-   * 에러 응답 생성
-   */
   static createErrorResponse(
     message: string,
     status: number = 500,
@@ -63,9 +43,6 @@ export class ApiMockUtils {
     };
   }
 
-  /**
-   * 네트워크 에러 생성
-   */
   static createNetworkError(
     message: string = "Network Error"
   ): Error & { code: string; isNetworkError: boolean } {
@@ -78,9 +55,6 @@ export class ApiMockUtils {
     return error;
   }
 
-  /**
-   * 타임아웃 에러 생성
-   */
   static createTimeoutError(
     message: string = "Request Timeout"
   ): Error & { code: string; timeout: boolean } {
@@ -93,9 +67,6 @@ export class ApiMockUtils {
     return error;
   }
 
-  /**
-   * 지연된 응답 생성 (비동기 테스트용)
-   */
   static createDelayedResponse<T>(
     data: T,
     delay: number = 100
@@ -107,9 +78,6 @@ export class ApiMockUtils {
     });
   }
 
-  /**
-   * 지연된 에러 응답 생성
-   */
   static createDelayedError(
     error: MockErrorResponse,
     delay: number = 100
@@ -128,40 +96,25 @@ export class ApiMockUtils {
   }
 }
 
-/**
- * HTTP 메서드별 모킹 함수들
- */
 export const HttpMocks = {
-  /**
-   * GET 요청 모킹
-   */
   get: <T>(data: T, status: number = 200) => {
     return vi
       .fn()
       .mockResolvedValue(ApiMockUtils.createSuccessResponse(data, status));
   },
 
-  /**
-   * POST 요청 모킹
-   */
   post: <T>(data: T, status: number = 201) => {
     return vi
       .fn()
       .mockResolvedValue(ApiMockUtils.createSuccessResponse(data, status));
   },
 
-  /**
-   * PUT 요청 모킹
-   */
   put: <T>(data: T, status: number = 200) => {
     return vi
       .fn()
       .mockResolvedValue(ApiMockUtils.createSuccessResponse(data, status));
   },
 
-  /**
-   * DELETE 요청 모킹
-   */
   delete: (status: number = 204) => {
     return vi
       .fn()
@@ -170,9 +123,6 @@ export const HttpMocks = {
       );
   },
 
-  /**
-   * 에러 응답 모킹
-   */
   error: (message: string, status: number = 500, code?: string) => {
     const error = new Error(message) as Error & {
       status: number;
@@ -183,28 +133,16 @@ export const HttpMocks = {
     return vi.fn().mockRejectedValue(error);
   },
 
-  /**
-   * 네트워크 에러 모킹
-   */
   networkError: (message: string = "Network Error") => {
     return vi.fn().mockRejectedValue(ApiMockUtils.createNetworkError(message));
   },
 
-  /**
-   * 타임아웃 에러 모킹
-   */
   timeoutError: (message: string = "Request Timeout") => {
     return vi.fn().mockRejectedValue(ApiMockUtils.createTimeoutError(message));
   },
 };
 
-/**
- * 페이지네이션 응답 모킹
- */
 export const PaginationMocks = {
-  /**
-   * 페이지네이션된 응답 생성
-   */
   createPaginatedResponse: <T>(
     items: T[],
     page: number = 1,
@@ -229,17 +167,11 @@ export const PaginationMocks = {
     };
   },
 
-  /**
-   * 빈 페이지 응답 생성
-   */
   createEmptyPage: (page: number = 1, limit: number = 10) => {
     return PaginationMocks.createPaginatedResponse([], page, limit, 0);
   },
 };
 
-/**
- * 일반적인 HTTP 상태 코드 상수
- */
 export const HttpStatus = {
   OK: 200,
   CREATED: 201,
@@ -255,9 +187,6 @@ export const HttpStatus = {
   SERVICE_UNAVAILABLE: 503,
 } as const;
 
-/**
- * 일반적인 에러 메시지 상수
- */
 export const ErrorMessages = {
   NETWORK_ERROR: "Network connection failed",
   TIMEOUT: "Request timeout",

@@ -1,8 +1,5 @@
 import React from "react";
 
-/**
- * 모킹된 Next.js 라우터 객체
- */
 export const createMockRouter = (
   options: {
     pathname?: string;
@@ -40,9 +37,6 @@ export const createMockRouter = (
   },
 });
 
-/**
- * Router Context Provider 래퍼
- */
 interface RouterWrapperProps {
   children: React.ReactNode;
   initialPath?: string;
@@ -72,9 +66,6 @@ export const RouterWrapper: React.FC<RouterWrapperProps> = ({
   return <>{children}</>;
 };
 
-/**
- * 커스텀 RouterWrapper 팩토리
- */
 export const createRouterWrapper = (routerOptions: {
   pathname?: string;
   query?: Record<string, string | string[]>;
@@ -92,20 +83,11 @@ export const createRouterWrapper = (routerOptions: {
   return CustomRouterWrapper;
 };
 
-/**
- * 라우터 모킹 헬퍼 함수들
- */
 export const RouterMockHelpers = {
-  /**
-   * useRouter 훅 모킹 설정
-   */
   mockUseRouter: (routerMock: ReturnType<typeof createMockRouter>) => {
     return routerMock;
   },
 
-  /**
-   * 라우터 네비게이션 검증
-   */
   verifyNavigation: (
     mockRouter: ReturnType<typeof createMockRouter>,
     expectedPath: string,
@@ -114,9 +96,6 @@ export const RouterMockHelpers = {
     expect(mockRouter[method]).toHaveBeenCalledWith(expectedPath);
   },
 
-  /**
-   * 라우터 쿼리 파라미터 검증
-   */
   verifyQuery: (
     mockRouter: ReturnType<typeof createMockRouter>,
     expectedQuery: Record<string, string | string[]>
@@ -124,9 +103,6 @@ export const RouterMockHelpers = {
     expect(mockRouter.query).toEqual(expectedQuery);
   },
 
-  /**
-   * 라우터 상태 초기화
-   */
   resetRouter: (mockRouter: ReturnType<typeof createMockRouter>) => {
     if (vi.isMockFunction(mockRouter.push)) {
       mockRouter.push.mockClear();

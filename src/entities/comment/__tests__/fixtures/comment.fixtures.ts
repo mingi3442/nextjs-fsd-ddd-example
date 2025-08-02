@@ -162,9 +162,6 @@ export const CommentFixtures = {
     } as CommentEntity,
   },
 
-  /**
-   * 엣지 케이스 데이터 세트
-   */
   edge: {
     // Comment with zero likes
     zeroLikes: {

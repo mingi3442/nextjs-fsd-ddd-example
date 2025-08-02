@@ -619,9 +619,8 @@ describe("Post Domain Model", () => {
 
       it("should handle unicode characters in title and body when unicode content is provided", () => {
         // Given: Data with unicode characters is prepared
-        const unicodeTitle = "🚀 테스트 포스트 タイトル 🌟";
-        const unicodeBody =
-          "이것은 한글과 日本語와 emoji 🎉가 포함된 내용입니다.";
+        const unicodeTitle = "🚀 테스트 포스트 🌟";
+        const unicodeBody = "이것은 한글과 emoji 🎉가 포함된 내용입니다.";
         const { id, user, image, likes, totalComments, createdAt, updatedAt } =
           validPostData;
 
