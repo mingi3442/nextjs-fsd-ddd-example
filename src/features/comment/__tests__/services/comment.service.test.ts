@@ -1,16 +1,15 @@
+import { CommentMapper, CommentRepository } from "@/entities/comment";
 import {
   CommentFixtures,
-  CommentMapper,
-  CommentRepository,
   CommentRepositoryMocks,
   MockCommentRepository,
-} from "@/entities/comment";
+} from "@/entities/comment/__tests__";
+import { UserRepository } from "@/entities/user";
 import {
   MockUserRepository,
   UserFixtures,
-  UserRepository,
   UserRepositoryMocks,
-} from "@/entities/user";
+} from "@/entities/user/__tests__";
 import {
   AsyncTestHelpers,
   MockHelpers,

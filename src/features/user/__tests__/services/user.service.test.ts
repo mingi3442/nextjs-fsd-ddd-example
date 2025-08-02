@@ -1,10 +1,9 @@
+import { UserProfileDto, UserRepository } from "@/entities/user";
+import { UserFixtures } from "@/entities/user/__tests__/fixtures";
 import {
   MockUserRepository,
-  UserFixtures,
-  UserProfileDto,
-  UserRepository,
   UserRepositoryMocks,
-} from "@/entities/user";
+} from "@/entities/user/__tests__/mocks";
 import { BaseError } from "@/shared/libs/errors";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { UserService } from "../../services/user.service";

@@ -1,8 +1,3 @@
-export {
-  UserFixtures,
-  UserRepositoryMocks,
-  type MockUserRepository,
-} from "./__tests__";
 export { User, UserFactory, type UserRepository } from "./core";
 export { USER_QUERY_KEYS } from "./infrastructure/api";
 export type { UserProfileDto } from "./infrastructure/dto";
