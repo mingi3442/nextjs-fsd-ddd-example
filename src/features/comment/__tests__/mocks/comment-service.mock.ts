@@ -1,4 +1,4 @@
-import { CommentEntity } from "@/entities/comment/types";
+import { CommentEntity } from "@/entities/comment";
 import { MockService, ServiceMockFactory } from "@/shared/libs/__tests__";
 import { vi } from "vitest";
 
