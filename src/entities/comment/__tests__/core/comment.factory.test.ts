@@ -1,7 +1,7 @@
 import { Comment, CommentFactory } from "../../core";
 import { CommentDto } from "../../infrastructure/dto";
 import { UserReference } from "../../types";
-import { CommentFixtures } from "../fixtures/comment.fixtures";
+import { CommentFixtures } from "../fixtures";
 
 /**
  * CommentFactory Tests
