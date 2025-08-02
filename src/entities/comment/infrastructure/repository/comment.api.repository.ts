@@ -1,5 +1,5 @@
 import { CommentMapper } from "@/entities/comment/mapper";
-import { ApiClient } from "@/shared/api/api";
+import { ApiClient } from "@/shared/api";
 import { Comment, CommentRepository } from "../../core";
 import { CommentAdapter } from "../api/comment.adapter";
 import { CommentDto } from "../dto";
@@ -33,7 +33,7 @@ export class CommentApiRepository implements CommentRepository {
       return CommentMapper.toDomainList(commentDtos);
     } catch (error) {
       console.error(`Error fetching comments for post ID ${postId}:`, error);
-      return [];
+      throw new Error(`Failed to fetch comments for post ID ${postId}`);
     }
   }
 

@@ -3,7 +3,7 @@ import { PostDto } from "../infrastructure/dto";
 import { PostEntity } from "../types";
 
 export class PostMapper {
-  static toDto(post: Post): PostDto {
+  static toDto(post: Post | PostEntity): PostDto {
     return {
       id: post.id,
       user: post.user,
@@ -53,7 +53,7 @@ export class PostMapper {
     return dtos.map((dto) => this.toDomain(dto));
   }
 
-  static toDtoList(posts: Post[]): PostDto[] {
+  static toDtoList(posts: Post[] | PostEntity[]): PostDto[] {
     return posts.map((post) => this.toDto(post));
   }
 }

@@ -24,7 +24,6 @@ export const createUseGetPostById = (postUseCase: PostUseCase) => {
       enabled: enabled,
       staleTime: 1000 * 60 * 5,
       gcTime: 1000 * 60 * 10,
-      retry: 1,
     });
     return usePostById;
   };

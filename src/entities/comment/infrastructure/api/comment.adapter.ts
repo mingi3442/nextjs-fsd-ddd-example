@@ -1,34 +1,22 @@
-import { ApiClient } from "@/shared/api/api";
+import { ApiClient } from "@/shared/api";
 import { Pagination } from "@/shared/types";
 import { CommentDto } from "../dto/comment.dto";
 
 export const CommentAdapter = (apiClient: ApiClient) => ({
   listByPost: async (postId: string): Promise<Pagination<CommentDto>> => {
-    try {
-      const response = await apiClient.get<Pagination<CommentDto>>(
-        `/posts/${postId}/comments`
-      );
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching comments for post ID ${postId}:`, error);
-      return {
-        data: [],
-        pagination: {
-          limit: 0,
-          skip: 0,
-          total: 0,
-        },
-      };
-    }
+    const response = await apiClient.get<Pagination<CommentDto>>(
+      `/posts/${postId}/comments`
+    );
+    return response.data;
   },
 
-  getById: async (id: string): Promise<CommentDto | null> => {
+  getById: async (id: string): Promise<CommentDto> => {
     try {
       const response = await apiClient.get<CommentDto>(`/comments/${id}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching comment with ID ${id}:`, error);
-      return null;
+      throw error;
     }
   },
 
@@ -36,7 +24,7 @@ export const CommentAdapter = (apiClient: ApiClient) => ({
     body: string,
     postId: string,
     userId: string
-  ): Promise<CommentDto | null> => {
+  ): Promise<CommentDto> => {
     try {
       const response = await apiClient.post<CommentDto>(`/comments/add`, {
         body,
@@ -46,11 +34,11 @@ export const CommentAdapter = (apiClient: ApiClient) => ({
       return response.data;
     } catch (error) {
       console.error("Error creating comment:", error);
-      return null;
+      throw error;
     }
   },
 
-  update: async (id: string, body: string): Promise<CommentDto | null> => {
+  update: async (id: string, body: string): Promise<CommentDto> => {
     try {
       const response = await apiClient.put<CommentDto>(`/comments/${id}`, {
         body,
@@ -58,7 +46,7 @@ export const CommentAdapter = (apiClient: ApiClient) => ({
       return response.data;
     } catch (error) {
       console.error(`Error updating comment with ID ${id}:`, error);
-      return null;
+      throw error;
     }
   },
 

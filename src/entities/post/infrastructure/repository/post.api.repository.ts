@@ -1,6 +1,6 @@
 import { PostAdapter } from "@/entities/post/infrastructure/api";
 import { PostMapper } from "@/entities/post/mapper";
-import { ApiClient } from "@/shared/api/api";
+import { ApiClient } from "@/shared/api";
 import { PostRepository } from "../../core";
 import { Post } from "../../core/post.domain";
 

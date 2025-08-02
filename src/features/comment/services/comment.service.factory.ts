@@ -1,6 +1,6 @@
 import { CommentApiRepository } from "@/entities/comment";
 import { UserApiRepository } from "@/entities/user";
-import { apiClient } from "@/shared/api/api";
+import { apiClient } from "@/shared/api";
 import { CommentService } from "./comment.service";
 
 export const createCommentService = () => {

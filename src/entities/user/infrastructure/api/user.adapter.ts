@@ -1,4 +1,4 @@
-import { ApiClient } from "@/shared/api/api";
+import { ApiClient } from "@/shared/api";
 import { UserDto, UserProfileDto } from "../dto";
 
 export const UserAdapter = (apiClient: ApiClient) => ({
@@ -8,7 +8,7 @@ export const UserAdapter = (apiClient: ApiClient) => ({
       .then((response) => response.data)
       .catch((error) => {
         console.error("User Profile Error: ", error);
-        return error;
+        throw error;
       });
   },
 });

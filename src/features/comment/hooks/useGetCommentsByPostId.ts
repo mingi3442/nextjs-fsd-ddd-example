@@ -27,7 +27,6 @@ export const createUseGetCommentsByPostId = (
       gcTime: 5 * 60 * 1000,
       refetchOnWindowFocus: true,
       enabled: Boolean(postId),
-      retry: 2,
     });
     return useGetCommentsByPostId;
   };
