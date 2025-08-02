@@ -181,7 +181,7 @@ describe("Comment Service", () => {
       const body = "Comment from user without image";
       const postId = "post-123";
       const userId = "user-456";
-      const mockUser = { ...UserFixtures.valid.basic, profileImage: null };
+      const mockUser = { ...UserFixtures.valid.basic, profileImage: "" };
       const mockComment = CommentFixtures.valid.withoutUserImage;
 
       mockUserRepository.getUserProfile.mockResolvedValue(mockUser);

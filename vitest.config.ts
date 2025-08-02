@@ -10,7 +10,12 @@ export default defineConfig({
       "src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
       "src/**/tests/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
     ],
-    exclude: ["node_modules", "dist", ".next", "src/shared/libs/tests/**/*"],
+    exclude: [
+      "node_modules",
+      "dist",
+      ".next",
+      "src/shared/libs/__tests__/**/*",
+    ],
   },
   resolve: {
     alias: {

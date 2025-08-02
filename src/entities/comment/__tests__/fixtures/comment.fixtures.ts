@@ -339,9 +339,6 @@ export const createRandomCommentFixture = (
     likes: Math.floor(Math.random() * 100),
     createdAt: TestDataHelpers.generateTimestamp(-Math.random() * 86400000 * 7), // Within the last 7 days
     updatedAt: TestDataHelpers.generateTimestamp(-Math.random() * 86400000 * 7),
-    updateBody: vi.fn(),
-    like: vi.fn(),
-    unlike: vi.fn(),
     ...overrides,
-  };
+  } as CommentEntity;
 };
