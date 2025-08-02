@@ -1,6 +1,6 @@
-import { CommentDto } from "@/entities/comment/infrastructure/dto";
-import { UserAvatar } from "@/entities/user/ui/identifier";
-import { formatDate } from "@/shared/libs/date";
+import { CommentDto } from "@/entities/comment";
+import { UserAvatar } from "@/entities/user";
+import { formatDate } from "@/shared/libs";
 
 export const CommentView = ({ comment }: { comment: CommentDto }) => {
   return (

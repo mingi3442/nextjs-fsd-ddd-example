@@ -1,6 +1,5 @@
-import { COMMENT_QUERY_KEY } from "@/entities/comment/infrastructure/api";
-import { CommentDto } from "@/entities/comment/infrastructure/dto";
-import { BaseError } from "@/shared/libs/errors";
+import { COMMENT_QUERY_KEY, CommentDto } from "@/entities/comment";
+import { BaseError } from "@/shared/libs";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { CommentUseCase } from "../usecase/comment.usecase";
 

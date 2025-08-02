@@ -1,8 +1,8 @@
-import { PostDto } from "@/entities/post/infrastructure/dto";
+import { PostDto } from "@/entities/post";
 import { FullWrapper } from "@/shared/libs/__tests__";
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import { PostCard } from "../../../ui/card/PostCard";
+import { PostCard } from "../../../ui/card";
 import { mockPostsArray } from "../../fixtures";
 
 /**

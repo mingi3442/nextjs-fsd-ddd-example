@@ -1,5 +1,5 @@
-import { UserReference } from "@/entities/comment/types";
 import { CommentDto } from "../infrastructure/dto";
+import { UserReference } from "../types";
 import { Comment } from "./comment.domain";
 
 export class CommentFactory {

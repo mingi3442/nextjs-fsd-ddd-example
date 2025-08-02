@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import type { CommentDto } from "@/entities/comment/infrastructure/dto";
-import type { UserDto } from "@/entities/user/infrastructure/dto";
+import type { CommentDto } from "@/entities/comment";
+import type { UserDto } from "@/entities/user";
 import { mockPostDetailData } from "@/features/post/__tests__";
 import { FullWrapper } from "@/shared/libs/__tests__";
 import { render, screen } from "@testing-library/react";

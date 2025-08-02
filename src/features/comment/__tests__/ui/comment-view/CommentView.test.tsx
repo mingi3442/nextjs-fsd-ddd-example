@@ -1,4 +1,4 @@
-import { CommentDto } from "@/entities/comment/infrastructure/dto";
+import { CommentDto } from "@/entities/comment";
 import { FullWrapper } from "@/shared/libs/__tests__";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";

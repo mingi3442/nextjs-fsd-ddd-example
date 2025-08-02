@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import type { PostDto } from "@/entities/post/infrastructure/dto";
+import type { PostDto } from "@/entities/post";
 import { FullWrapper } from "@/shared/libs/__tests__";
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { mockPostsData } from "../../../features/post/__tests__/fixtures";
+import { mockPostsData } from "../../../features/post/__tests__";
 import { PostListSection } from "../post-list-section";
 
 // Mock the useGetPosts hook
