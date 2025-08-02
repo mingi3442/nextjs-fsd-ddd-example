@@ -1,9 +1,9 @@
 import { ApiClient } from "@/shared/api/api";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { User } from "../../../core/user.domain";
-import { UserProfileDto } from "../../../infrastructure/dto";
-import { UserApiRepository } from "../../../infrastructure/repository/user.api.repository";
-import { UserFixtures } from "../../fixtures/user.fixtures";
+import { User } from "../../core/user.domain";
+import { UserProfileDto } from "../../infrastructure/dto";
+import { UserApiRepository } from "../../infrastructure/repository/user.api.repository";
+import { UserFixtures } from "../fixtures/user.fixtures";
 
 /**
  * User API Repository Tests
