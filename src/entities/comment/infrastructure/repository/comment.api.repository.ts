@@ -33,7 +33,7 @@ export class CommentApiRepository implements CommentRepository {
       return CommentMapper.toDomainList(commentDtos);
     } catch (error) {
       console.error(`Error fetching comments for post ID ${postId}:`, error);
-      throw new Error("Failed to fetch comments");
+      throw new Error(`Failed to fetch comments for post ID ${postId}`);
     }
   }
 

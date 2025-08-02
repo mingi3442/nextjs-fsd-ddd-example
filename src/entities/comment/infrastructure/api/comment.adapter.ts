@@ -4,22 +4,10 @@ import { CommentDto } from "../dto/comment.dto";
 
 export const CommentAdapter = (apiClient: ApiClient) => ({
   listByPost: async (postId: string): Promise<Pagination<CommentDto>> => {
-    try {
-      const response = await apiClient.get<Pagination<CommentDto>>(
-        `/posts/${postId}/comments`
-      );
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching comments for post ID ${postId}:`, error);
-      return {
-        data: [],
-        pagination: {
-          limit: 0,
-          skip: 0,
-          total: 0,
-        },
-      };
-    }
+    const response = await apiClient.get<Pagination<CommentDto>>(
+      `/posts/${postId}/comments`
+    );
+    return response.data;
   },
 
   getById: async (id: string): Promise<CommentDto> => {

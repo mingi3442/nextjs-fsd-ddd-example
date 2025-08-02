@@ -105,16 +105,15 @@ describe("Comment API Repository", () => {
       expect(result).toEqual([]);
     });
 
-    it("should return empty array when API call fails", async () => {
+    it("should throw an error when API call fails", async () => {
       // Given: Mock API client throws error
       const apiError = new Error("API Error");
       vi.mocked(mockApiClient.get).mockRejectedValue(apiError);
 
-      // When: Get comments by post ID
-      const result = await commentApiRepository.getByPostId("post-123");
-
-      // Then: Should return empty array
-      expect(result).toEqual([]);
+      // When & Then: Should throw an error
+      await expect(
+        commentApiRepository.getByPostId("post-123")
+      ).rejects.toThrow("Failed to fetch comments");
     });
   });
 
