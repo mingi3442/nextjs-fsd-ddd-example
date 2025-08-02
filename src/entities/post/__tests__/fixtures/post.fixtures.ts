@@ -1,16 +1,8 @@
 import { TestDataHelpers } from "@/shared/libs/__tests__";
 import { PostEntity, UserReference } from "../../types";
 
-/**
- * Post 도메인 테스트 픽스처
- * Post 엔티티 관련 테스트에서 재사용 가능한 테스트 데이터 제공
- */
 export const PostFixtures = {
-  /**
-   * 유효한 게시글 데이터 세트
-   */
   valid: {
-    // Basic post data
     basic: {
       id: "post-123",
       user: {
@@ -23,11 +15,10 @@ export const PostFixtures = {
       image: "https://example.com/post-image.jpg",
       likes: 5,
       totalComments: 3,
-      createdAt: TestDataHelpers.generateTimestamp(-86400000), // 1일 전
-      updatedAt: TestDataHelpers.generateTimestamp(-3600000), // 1시간 전
+      createdAt: TestDataHelpers.generateTimestamp(-86400000), // 1 Day ago
+      updatedAt: TestDataHelpers.generateTimestamp(-3600000), // 1 Hour ago
     } as PostEntity,
 
-    // Post without image
     withoutImage: {
       id: "post-456",
       user: {
@@ -40,11 +31,10 @@ export const PostFixtures = {
       image: "",
       likes: 0,
       totalComments: 0,
-      createdAt: TestDataHelpers.generateTimestamp(-172800000), // 2일 전
+      createdAt: TestDataHelpers.generateTimestamp(-172800000), // 2 Days ago
       updatedAt: TestDataHelpers.generateTimestamp(-172800000),
     } as PostEntity,
 
-    // Post with many likes
     popularPost: {
       id: "post-popular",
       user: {
@@ -57,11 +47,10 @@ export const PostFixtures = {
       image: "https://example.com/popular-post.jpg",
       likes: 1000,
       totalComments: 250,
-      createdAt: TestDataHelpers.generateTimestamp(-604800000), // 1주일 전
-      updatedAt: TestDataHelpers.generateTimestamp(-86400000), // 1일 전
+      createdAt: TestDataHelpers.generateTimestamp(-604800000), // 1 Week ago
+      updatedAt: TestDataHelpers.generateTimestamp(-86400000), // 1 Day ago
     } as PostEntity,
 
-    // Post with long title and content
     longContent: {
       id: "post-long",
       user: {
@@ -82,11 +71,7 @@ export const PostFixtures = {
     } as PostEntity,
   },
 
-  /**
-   * 무효한 게시글 데이터 세트 (에러 테스트용)
-   */
   invalid: {
-    // Empty title
     emptyTitle: {
       id: "post-empty-title",
       user: {
@@ -120,7 +105,6 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // Invalid user reference
     invalidUser: {
       id: "post-invalid-user",
       user: {
@@ -137,7 +121,6 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // Negative likes count
     negativeLikes: {
       id: "post-negative-likes",
       user: {
@@ -155,11 +138,7 @@ export const PostFixtures = {
     } as PostEntity,
   },
 
-  /**
-   * 엣지 케이스 데이터 세트
-   */
   edge: {
-    // Post with zero likes
     zeroLikes: {
       id: "post-zero-likes",
       user: {
@@ -193,7 +172,6 @@ export const PostFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as PostEntity,
 
-    // Post with same creation and update timestamps
     sameTimestamps: {
       id: "post-same-timestamps",
       user: {
@@ -206,14 +184,11 @@ export const PostFixtures = {
       image: "https://example.com/post.jpg",
       likes: 2,
       totalComments: 1,
-      createdAt: 1640995200000, // Fixed timestamp
-      updatedAt: 1640995200000, // Same timestamp
+      createdAt: 1640995200000,
+      updatedAt: 1640995200000,
     } as PostEntity,
   },
 
-  /**
-   * 여러 게시글 데이터 배열
-   */
   multiple: [
     {
       id: "post-1",
@@ -263,9 +238,6 @@ export const PostFixtures = {
   ] as PostEntity[],
 };
 
-/**
- * 게시글 데이터 생성 팩토리 함수
- */
 export const createPostFixture = (
   overrides: Partial<PostEntity> = {}
 ): PostEntity => {
@@ -275,9 +247,6 @@ export const createPostFixture = (
   };
 };
 
-/**
- * 여러 게시글 데이터 생성 팩토리 함수
- */
 export const createMultiplePostFixtures = (
   count: number,
   baseData: Partial<PostEntity> = {}
@@ -295,9 +264,6 @@ export const createMultiplePostFixtures = (
   }));
 };
 
-/**
- * 특정 사용자의 게시글들 생성 팩토리 함수
- */
 export const createPostsForUser = (
   user: UserReference,
   count: number = 3
@@ -305,9 +271,6 @@ export const createPostsForUser = (
   return createMultiplePostFixtures(count, { user });
 };
 
-/**
- * 랜덤 게시글 데이터 생성 팩토리 함수
- */
 export const createRandomPostFixture = (
   overrides: Partial<PostEntity> = {}
 ): PostEntity => {

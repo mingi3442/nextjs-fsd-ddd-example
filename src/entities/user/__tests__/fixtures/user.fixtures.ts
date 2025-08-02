@@ -1,13 +1,6 @@
 import { UserEntity } from "../../types";
 
-/**
- * User 도메인 테스트 픽스처
- * User 엔티티 관련 테스트에서 재사용 가능한 테스트 데이터 제공
- */
 export const UserFixtures = {
-  /**
-   * 유효한 사용자 데이터 세트
-   */
   valid: {
     // Basic user data
     basic: {
@@ -55,9 +48,6 @@ export const UserFixtures = {
     } as UserEntity,
   },
 
-  /**
-   * 무효한 사용자 데이터 세트 (에러 테스트용)
-   */
   invalid: {
     // Empty username
     emptyUsername: {
@@ -114,9 +104,6 @@ export const UserFixtures = {
     } as UserEntity,
   },
 
-  /**
-   * 엣지 케이스 데이터 세트
-   */
   edge: {
     // Minimum length username
     minLengthUsername: {
@@ -136,7 +123,6 @@ export const UserFixtures = {
       email: "max@example.com",
     } as UserEntity,
 
-    // 0세 사용자
     zeroAge: {
       id: "user-zero",
       username: "zeroage",
@@ -156,9 +142,6 @@ export const UserFixtures = {
     } as UserEntity,
   },
 
-  /**
-   * 여러 사용자 데이터 배열
-   */
   multiple: [
     {
       id: "user-1",
@@ -184,9 +167,6 @@ export const UserFixtures = {
   ] as UserEntity[],
 };
 
-/**
- * 사용자 데이터 생성 팩토리 함수
- */
 export const createUserFixture = (
   overrides: Partial<UserEntity> = {}
 ): UserEntity => {

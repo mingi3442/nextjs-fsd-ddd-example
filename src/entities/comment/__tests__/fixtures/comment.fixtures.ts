@@ -1,14 +1,7 @@
 import { TestDataHelpers } from "@/shared/libs/__tests__";
 import { CommentEntity, UserReference } from "../../types";
 
-/**
- * Comment 도메인 테스트 픽스처
- * Comment 엔티티 관련 테스트에서 재사용 가능한 테스트 데이터 제공
- */
 export const CommentFixtures = {
-  /**
-   * 유효한 댓글 데이터 세트
-   */
   valid: {
     // Basic comment data
     basic: {
@@ -21,11 +14,10 @@ export const CommentFixtures = {
       } as UserReference,
       body: "This is a test comment.",
       likes: 2,
-      createdAt: TestDataHelpers.generateTimestamp(-3600000), // 1시간 전
+      createdAt: TestDataHelpers.generateTimestamp(-3600000), // 1 Hour ago
       updatedAt: TestDataHelpers.generateTimestamp(-3600000),
     } as CommentEntity,
 
-    // Comment from user without profile image
     withoutUserImage: {
       id: "comment-456",
       postId: "post-123",
@@ -36,7 +28,7 @@ export const CommentFixtures = {
       } as UserReference,
       body: "Comment from user without profile image.",
       likes: 0,
-      createdAt: TestDataHelpers.generateTimestamp(-7200000), // 2시간 전
+      createdAt: TestDataHelpers.generateTimestamp(-7200000), // 2 Hours ago
       updatedAt: TestDataHelpers.generateTimestamp(-7200000),
     } as CommentEntity,
 
@@ -51,11 +43,10 @@ export const CommentFixtures = {
       } as UserReference,
       body: "This comment received many likes!",
       likes: 50,
-      createdAt: TestDataHelpers.generateTimestamp(-86400000), // 1일 전
+      createdAt: TestDataHelpers.generateTimestamp(-86400000), // 1 Day ago
       updatedAt: TestDataHelpers.generateTimestamp(-86400000),
     } as CommentEntity,
 
-    // Maximum length comment (100 characters)
     maxLengthComment: {
       id: "comment-max",
       postId: "post-123",
@@ -66,11 +57,10 @@ export const CommentFixtures = {
       } as UserReference,
       body: "This is a comment that is exactly one hundred characters long to test the maximum length limit.",
       likes: 1,
-      createdAt: TestDataHelpers.generateTimestamp(-1800000), // 30분 전
-      updatedAt: TestDataHelpers.generateTimestamp(-900000), // 15분 전 (수정됨)
+      createdAt: TestDataHelpers.generateTimestamp(-1800000), // 30 minutes ago
+      updatedAt: TestDataHelpers.generateTimestamp(-900000), // 15 minutes ago (edited)
     } as CommentEntity,
 
-    // Minimum length comment
     minLengthComment: {
       id: "comment-min",
       postId: "post-123",
@@ -81,14 +71,11 @@ export const CommentFixtures = {
       } as UserReference,
       body: "Hi",
       likes: 0,
-      createdAt: TestDataHelpers.generateTimestamp(-600000), // 10분 전
+      createdAt: TestDataHelpers.generateTimestamp(-600000), // 10 minutes ago
       updatedAt: TestDataHelpers.generateTimestamp(-600000),
     } as CommentEntity,
   },
 
-  /**
-   * 무효한 댓글 데이터 세트 (에러 테스트용)
-   */
   invalid: {
     // Empty comment body
     emptyBody: {
@@ -150,7 +137,6 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // null 사용자 참조
     nullUser: {
       id: "comment-null-user",
       postId: "post-123",
@@ -161,7 +147,6 @@ export const CommentFixtures = {
       updatedAt: TestDataHelpers.generateTimestamp(),
     } as CommentEntity,
 
-    // Negative likes count
     negativeLikes: {
       id: "comment-negative-likes",
       postId: "post-123",
@@ -257,9 +242,6 @@ export const CommentFixtures = {
     } as CommentEntity,
   },
 
-  /**
-   * 여러 댓글 데이터 배열
-   */
   multiple: [
     {
       id: "comment-1",
@@ -303,9 +285,6 @@ export const CommentFixtures = {
   ] as CommentEntity[],
 };
 
-/**
- * 댓글 데이터 생성 팩토리 함수
- */
 export const createCommentFixture = (
   overrides: Partial<CommentEntity> = {}
 ): CommentEntity => {
@@ -316,9 +295,6 @@ export const createCommentFixture = (
   };
 };
 
-/**
- * 여러 댓글 데이터 생성 팩토리 함수
- */
 export const createMultipleCommentFixtures = (
   count: number,
   postId: string = "post-123",
@@ -337,9 +313,6 @@ export const createMultipleCommentFixtures = (
   }));
 };
 
-/**
- * 특정 게시글의 댓글들 생성 팩토리 함수
- */
 export const createCommentsForPost = (
   postId: string,
   count: number = 3
@@ -347,9 +320,6 @@ export const createCommentsForPost = (
   return createMultipleCommentFixtures(count, postId);
 };
 
-/**
- * 특정 사용자의 댓글들 생성 팩토리 함수
- */
 export const createCommentsForUser = (
   user: UserReference,
   count: number = 3
@@ -357,9 +327,6 @@ export const createCommentsForUser = (
   return createMultipleCommentFixtures(count, "post-123", { user });
 };
 
-/**
- * 랜덤 댓글 데이터 생성 팩토리 함수
- */
 export const createRandomCommentFixture = (
   overrides: Partial<CommentEntity> = {}
 ): CommentEntity => {
