@@ -1,5 +1,5 @@
-import { PostDto } from "@/entities/post/infrastructure/dto";
-import { getRandomDate } from "@/shared/libs/date";
+import { PostDto } from "@/entities/post";
+import { getRandomDate } from "@/shared/libs";
 import { NextResponse } from "next/server";
 
 const generateMockPosts = (count: number = 24): PostDto[] => {

@@ -1,5 +1,5 @@
-import { CommentDto } from "@/entities/comment/infrastructure/dto";
-import { getRandomDate } from "@/shared/libs/date";
+import { CommentDto } from "@/entities/comment";
+import { getRandomDate } from "@/shared/libs";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(

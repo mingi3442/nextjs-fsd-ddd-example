@@ -1,4 +1,4 @@
-import { Comment } from "../core/comment.domain";
+import { Comment } from "../core";
 import { CommentDto } from "../infrastructure/dto";
 import { CommentEntity } from "../types";
 
