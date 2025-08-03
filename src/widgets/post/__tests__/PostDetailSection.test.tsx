@@ -117,7 +117,9 @@ describe("PostDetailSection Widget", () => {
       // Then: All essential elements should be rendered
       expect(screen.getByTestId("user-identifier")).toBeInTheDocument();
       expect(
-        screen.getByRole("img", { name: /testuser.*post-image/ })
+        screen.getByRole("img", {
+          name: `Post by ${mockPostDetailData.user.username}`,
+        })
       ).toBeInTheDocument();
       expect(screen.getByText(mockPostDetailData.body)).toBeInTheDocument();
       expect(
@@ -152,12 +154,12 @@ describe("PostDetailSection Widget", () => {
 
       // Then: Post image should have correct attributes
       const postImage = screen.getByRole("img", {
-        name: /testuser.*post-image/,
+        name: `Post by ${mockPostDetailData.user.username}`,
       });
       expect(postImage).toHaveAttribute("src", mockPostDetailData.image);
       expect(postImage).toHaveAttribute(
         "alt",
-        `${mockPostDetailData.user.username}${mockPostDetailData.image}`
+        `Post by ${mockPostDetailData.user.username}`
       );
     });
 
@@ -388,8 +390,13 @@ describe("PostDetailSection Widget", () => {
       );
 
       // Then: Zero values should be displayed correctly
-      expect(screen.getByText("0 Comments")).toBeInTheDocument();
-      expect(screen.getAllByText("0").length).toBeGreaterThanOrEqual(1);
+      const likesCount = screen.getByTestId("post-detail-likes-count");
+      const commentsCount = screen.getByTestId("post-detail-comments-count");
+      const commentsHeader = screen.getByTestId("comments-header");
+
+      expect(likesCount).toHaveTextContent("0");
+      expect(commentsCount).toHaveTextContent("0");
+      expect(commentsHeader).toHaveTextContent("0 Comments");
     });
 
     it("should handle user profile with missing profile image", () => {

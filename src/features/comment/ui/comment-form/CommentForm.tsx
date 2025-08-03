@@ -1,13 +1,20 @@
 import { UserAvatar } from "@/entities/user/ui/identifier";
 import { Input } from "@/shared/ui/input";
 
+interface CommentFormProps extends React.HTMLAttributes<HTMLFormElement> {
+  userProfileImage: string;
+}
+
 export const CommentForm = ({
   userProfileImage,
-}: {
-  userProfileImage: string;
-}) => {
+  className,
+  ...props
+}: CommentFormProps) => {
   return (
-    <form onSubmit={() => {}} className="flex items-center mb-6 gap-4">
+    <form
+      {...props}
+      onSubmit={() => {}}
+      className={`flex items-center mb-6 gap-4 ${className}`}>
       <UserAvatar userProfileImage={userProfileImage} />
       <Input
         type="text"

@@ -30,7 +30,9 @@ describe("PostCard Component", () => {
 
       // Then: Should display all essential elements
       const linkElement = screen.getByRole("link");
-      const postImage = screen.getByRole("img", { name: `post-${post.id}` });
+      const postImage = screen.getByRole("img", {
+        name: `Post by ${post.user.username}`,
+      });
       const postBody = screen.getByText(post.body);
       const likesCount = screen.getByText(post.likes.toLocaleString());
       const commentsCount = screen.getByText(
@@ -62,7 +64,7 @@ describe("PostCard Component", () => {
       // Then: Should still render other elements
       const linkElement = screen.getByRole("link");
       const postImage = screen.getByRole("img", {
-        name: `post-${emptyBodyPost.id}`,
+        name: `Post by ${emptyBodyPost.user.username}`,
       });
 
       expect(linkElement).toBeInTheDocument();
@@ -137,8 +139,10 @@ describe("PostCard Component", () => {
       );
 
       // Then: Should display post image with correct attributes
-      const postImage = screen.getByRole("img", { name: `post-${post.id}` });
-      expect(postImage).toHaveAttribute("alt", `post-${post.id}`);
+      const postImage = screen.getByRole("img", {
+        name: `Post by ${post.user.username}`,
+      });
+      expect(postImage).toHaveAttribute("alt", `Post by ${post.user.username}`);
       expect(postImage).toHaveAttribute("width", "400");
       expect(postImage).toHaveAttribute("height", "400");
     });
@@ -225,9 +229,12 @@ describe("PostCard Component", () => {
         </FullWrapper>
       );
 
-      // Then: Should display zero values
-      const allZeros = screen.getAllByText("0");
-      expect(allZeros.length).toBe(2); // One for likes, one for comments
+      // Then: Should display zero values for likes and comments specifically
+      const likesCount = screen.getByTestId("post-likes-count");
+      const commentsCount = screen.getByTestId("post-comments-count");
+
+      expect(likesCount).toHaveTextContent("0");
+      expect(commentsCount).toHaveTextContent("0");
     });
   });
 
@@ -263,10 +270,12 @@ describe("PostCard Component", () => {
 
       // Then: Should have proper semantic elements
       const linkElement = screen.getByRole("link");
-      const postImage = screen.getByRole("img", { name: `post-${post.id}` });
+      const postImage = screen.getByRole("img", {
+        name: `Post by ${post.user.username}`,
+      });
 
       expect(linkElement).toHaveAttribute("href", `/post/${post.id}`);
-      expect(postImage).toHaveAttribute("alt", `post-${post.id}`);
+      expect(postImage).toHaveAttribute("alt", `Post by ${post.user.username}`);
     });
 
     it("should be keyboard accessible", () => {

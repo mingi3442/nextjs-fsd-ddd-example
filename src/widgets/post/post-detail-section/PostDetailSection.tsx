@@ -24,7 +24,7 @@ export const PostDetailSection = ({ postId }: { postId: string }) => {
       <div className="rounded-lg overflow-hidden mb-4">
         <Image
           src={data.image}
-          alt={data.user.username + data.image}
+          alt={`Post by ${data.user.username}`}
           className="w-full h-auto"
           width={400}
           height={400}
@@ -37,15 +37,21 @@ export const PostDetailSection = ({ postId }: { postId: string }) => {
       <div className="mb-6">
         <p className="text-gray-800 mt-2 mb-4">{data.body}</p>
         <div className="flex items-center text-gray-500 text-sm">
-          <div className="flex items-center mr-4">
+          <div
+            className="flex items-center mr-4"
+            data-testid="post-detail-likes-section">
             <LikeIcon className="h-4 w-4 text-red-500 mr-1" />
-
-            <span>{data.likes.toLocaleString()}</span>
+            <span data-testid="post-detail-likes-count">
+              {data.likes.toLocaleString()}
+            </span>
           </div>
-          <div className="flex items-center">
+          <div
+            className="flex items-center"
+            data-testid="post-detail-comments-section">
             <CommentIcon className="h-4 w-4 text-blue-500 mr-1" />
-
-            <span>{data.comments.length.toLocaleString()}</span>
+            <span data-testid="post-detail-comments-count">
+              {data.comments.length.toLocaleString()}
+            </span>
           </div>
         </div>
       </div>
@@ -53,7 +59,9 @@ export const PostDetailSection = ({ postId }: { postId: string }) => {
       <Divider />
 
       <div>
-        <h3 className="font-medium mb-4">{data.comments.length} Comments</h3>
+        <h3 className="font-medium mb-4" data-testid="comments-header">
+          {data.comments.length} Comments
+        </h3>
         <CommentForm userProfileImage={userProfile?.profileImage} />
         <div className="space-y-4">
           {data.comments.map((comment) => (
